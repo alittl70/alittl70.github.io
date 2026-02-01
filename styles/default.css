@@ -1,4 +1,4 @@
-/* Personal Site THEME */
+/* Personal Site */
 
 body {
     background: #aeebb9;    /*Background color*/
@@ -7,21 +7,18 @@ body {
     line-height: 1.6;
     margin: 0;
 }
-
 /*Header and footer styling*/
 header, footer {
     background: #ebe7df;    /*Set background color*/
-    padding:1 rem 1.5rem;
+    padding:1rem 1.5rem;
     font-family: "Montserrat", Arial, sans-serif;
 }
-
 /*Main content layout*/
 main {
-    max-width: 990px;   /*readable width*/
+    max-width: 1000px;   /*readable width*/
     margin: 0 auto;     /*centered container*/
     padding: 1.5rem;
 }
-
 /* Spacing = proximity */
 h1 {
     margin-bottom: 0.75rem;
@@ -36,22 +33,40 @@ h2 {
 p {
     margin: 0.75rem 0;
 }
-
 /*Links*/
 
 a {
     color: #0000EE;     /*Link colors*/
+    padding: 1rem;
+
 }
 a:hover {
     color: #ff0800;     /*Hover color*/
-    margin: 2;
     text-align: center;
 }
 
-
-footer {
+nav {
     text-align: center;
+    font-size: 0.9rem;
 }
+
+figure {
+    text-align: center;
+    margin: 1.5rem auto;
+}
+
+figure img {
+    display: block;
+    margin: 1rem auto;
+}
+
+figcaption { 
+    font-size: 0.9rem;
+    margin-top:0.5rem;
+}
+
+
+
 
 
 
