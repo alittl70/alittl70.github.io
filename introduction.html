@@ -1,18 +1,27 @@
+<!-- Must start with this first.-->
 <!DOCTYPE html>
 <html lang="en">
+
+<!--Sets the character encoding so text displays correctly.-->
 <head>
     <meta charset="UTF-8">
+    <!-- Makes the page responsive on mobile devices.-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--Title shown on the browser tab.-->
     <title> Introduction </title>
 </head>
 
+<!-- Everything the user sees on the page goes inside the body.-->
 <body>
 
-    <header> 
+<!-- Header Include-->
+ <div data-include= "../components/header.html" ></div>
+
     <h1>
        Alanah Little | Adventurous Lion 
     </h1>
-    </header>
 
+<!-- Image Input: -->
     <figure>
         <img src= "images/trip.jpg" alt="Photo of Alanah Little " width = "200">
         <figcaption> 
@@ -21,6 +30,12 @@
     </figure>
 
     <!-- Personal Statement -->
+
+    <!--
+    Main contents of the webpage.
+    is a semantic element that represents
+    the primary content of the document. 
+    -->
     <main>
         <p>Hi! My name is Alanah Little. I’m a junior at UNC Charlotte studying Computer Science with a focus on Human-Computer Interaction.
            I'm interested in UX design, usability, and building products that feel simple and helpful.
@@ -85,14 +100,18 @@
      </blockquote>
     </main>
 
+<!-- Footer Include-->
+<div data-include="../components/footer.html"></div>
+<!-- HTMLInclude from Paul-Browne -->
+<script src= "../scripts/include.min.js"></script>
 
-    <footer>
         <p> 
             <a href=" https://alittl70.github.io/"> return to Home Page</a>
         </p>
-    </footer>
 
+<!-- Accumulus -->
+<script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
 
-    <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
 </body>
 </html>
+
