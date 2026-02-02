@@ -45,10 +45,24 @@ a:hover {
     text-align: center;
 }
 
-nav{
+nav {
     text-align: center;
     font-size: 0.9rem;
 }
 
+figure {
+    text-align: center;
+    margin: 1.5rem auto;
+}
+
+figure img {
+    display: block;
+    margin: 1rem auto;
+}
+
+figcaption { 
+    font-size: 0.9rem;
+    margin-top:0.5rem;
+}
 
 
