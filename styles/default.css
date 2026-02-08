@@ -45,10 +45,24 @@ a:hover {
     text-align: center;
 }
 
-nav {
-    text-align: center;
-    font-size: 0.9rem;
+
+.site-nav{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    border-top: 2px solid #000000;
+    padding-top: 0.6rem;
+    margin-top: 1rem;
 }
+
+.site-nav a{
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+}
+
+
 
 figure {
     text-align: center;
