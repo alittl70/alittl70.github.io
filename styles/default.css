@@ -1,4 +1,4 @@
-/* Personal Site */
+/* Personal Site / Home Page */
 
 *,
 *::before,
@@ -33,6 +33,7 @@ main {
 /* Headings */
 h1 {
   margin: 0.75rem 0;             /* cleaner than only margin-bottom */
+  text-align: center;
 }
 
 h2 {
