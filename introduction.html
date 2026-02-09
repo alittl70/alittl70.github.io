@@ -1,118 +1,82 @@
-<!-- Must start with this first.-->
 <!DOCTYPE html>
 <html lang="en">
-
-<!--Sets the character encoding so text displays correctly.-->
 <head>
-    <meta charset="UTF-8">
-    <!-- Makes the page responsive on mobile devices.-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/default.css">
-<!--Title shown on the browser tab.-->
-    <title> Introduction </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/default.css">
+  <title>Introduction</title>
 </head>
 
-<!-- Everything the user sees on the page goes inside the body.-->
 <body>
 
-<!-- Header Include-->
- <div data-include= "../components/header.html" ></div>
+  <!-- Header Include -->
+  <div data-include="../components/header.html"></div>
 
-    <h1>
-       Alanah Little | Adventurous Lion 
-    </h1>
+  <main>
+    <h1>Alanah Little | Adventurous Lion</h1>
 
-<!-- Image Input: -->
     <figure>
-        <img src= "images/trip.jpg" alt="Photo of Alanah Little " width = "400">
-        <figcaption> 
-            Visited the Aquarium in Japan with my boyfriend.
-        </figcaption>
+      <img src="images/trip.jpg" alt="Photo of Alanah Little" width="400">
+      <figcaption>Visited the Aquarium in Japan with my boyfriend.</figcaption>
     </figure>
 
-    <!-- Personal Statement -->
+    <p>
+      Hi! My name is Alanah Little. I’m a junior at UNC Charlotte studying Computer Science with a focus on Human-Computer Interaction.
+      I'm interested in UX design, usability, and building products that feel simple and helpful.
+    </p>
 
-    <!--
-    Main contents of the webpage.
-    is a semantic element that represents
-    the primary content of the document. 
-    -->
-    <main>
-        <p>Hi! My name is Alanah Little. I’m a junior at UNC Charlotte studying Computer Science with a focus on Human-Computer Interaction.
-           I'm interested in UX design, usability, and building products that feel simple and helpful.
-        </p>
+    <h2>Fun Facts About Me</h2>
+    <ul>
+      <li><strong>Personal Background:</strong> I'm currently 20 years old. I love traveling and trying new foods, and I enjoy improving my front-end coding skills each semester.</li>
+      <li><strong>Professional Background:</strong> I’m a Server Assistant at Eddie V’s Prime Seafood (1 year 10 months). I also worked at Dick’s Sporting Goods for 1 year, and I was a Taekwondo instructor for 5 years.</li>
+      <li><strong>Academic Background:</strong> I'm a junior at UNC Charlotte studying Computer Science with a focus in Human-Computer Interaction. Before that, I attended high school in Garner, North Carolina.</li>
+      <li><strong>Primary Work Computer:</strong> MacBook Pro M2 (13-inch).</li>
+      <li><strong>Backup Work Computer / Location Plan:</strong> If needed, I can use a loaner laptop from Atkins Library and work either at my apartment or the library.</li>
+      <li><strong>Funny / Interesting Fact:</strong> When I was a kid, I won a trophy at a pep rally for having the best dance.</li>
+      <li><strong>I’d also like to share:</strong> I was born in California.</li>
+    </ul>
 
-    <!-- Bulleted items: unordered list -->
-        <h2> Fun Facts About Me</h2>
-        <ul>
-            <li>
-             Personal Background:  I'm currently 20 years old, I love traveling and trying new foods, and I enjoy learning how improve my front-end coding skills as the semesters go by. 
-            </li>
-
-            <li>
-              Professional Background: I am currently a Server Assistant at Eddie V’s Prime Seafood and have been working there for 1 year and 10 months. I also worked at Dicks Sporting Goods for 1 year, and I was a Taekwondo Instructor for 5 years.
-            </li>
-
-            <li>
-              Academic Background: I'm currently a Junior here at UNC Charlotte studying computer science with a focus in Human-Computer Interaction. Before that, I attend Highschool in Garner, North Carolina. 
-            </li>
-
-            <li>
-              Primary Work Computer: The laptop I use for university is a MacBook Pro M2 13-inch.   
-            </li>
-
-            <li>
-               Backup Work Computer and Location Plan: I will go to the Atkins Library and get a loaner laptop. Apartment and Atkins Library. 
-            </li>
-
-            <li>
-               Funny/ Interesting item to remember me by: When I was a kid, I won a trophy during a pep rally for having the best dance.
-            </li>
-
-            <li>
-               I’d also like to share: I was born in California.
-            </li>
-        </ul>
-
-    
-    <!-- Courses taking: ordered list -->
-    <h2>Courses I’m Taking & Why: </h2>
-    <ol> 
-        <li> Major Related Courses:
-            <ol> 
-        <li>ITSC3688 - Computers and Their Impact on Society: A required and interesting class for me to develop and refine my professional skills.</li>
-        <li>ITSC3135 - Front-End Web Application Development: Required and interesting class.</li>
-        <li>ITSC2600 -Computer-Science Program, Identity, Career: Required and interesting class. </li>
-        <li>ITSC 4350- Design Prototyping: Required and interesting class. </li>
-            </ol>
-        </li> 
-        <li> Math / Statistics
-            <ol>
-        <li>STAT1220 - Elements of Stat I:  Required course. </li>
-            </ol>
-        </li>
+    <h2>Courses I’m Taking &amp; Why</h2>
+    <ol>
+      <li>
+        <strong>Major Related Courses</strong>
+        <ol>
+          <li>ITSC 3688 - Computers and Their Impact on Society: A required class that helps me develop and refine professional skills.</li>
+          <li>ITIS 3135 - Front-End Web Application Development: Required and very relevant to my interests.</li>
+          <li>ITSC 2600 - Computer Science Program, Identity, Career: Required course focused on career development.</li>
+          <li>ITSC 4350 - Design Prototyping: Required course that supports my UX/HCI focus.</li>
+        </ol>
+      </li>
+      <li>
+        <strong>Math / Statistics</strong>
+        <ol>
+          <li>STAT 1220 - Elements of Statistics I: Required course.</li>
+        </ol>
+      </li>
     </ol>
 
-    <!-- Quote Requirement: -->
-     <h2> Favorite Quote </h2>
-     <blockquote> 
-        "The real voyage of discovery consists not in seeking new landscapes, but in having new eyes."
-        <cite>- <a href="https://stanphelps.com/the-voyage-of-discovery-is-not-in-seeking-new-landscapes-but-in-having-new-eyes-marcel-proust/#:~:text=In%20the%20words%20of%20Marcel,managing%20relationships%20and%20minimizing%20pressure." > </a> Marcel Proust </cite>
-     </blockquote>
-    </main>
+    <h2>Favorite Quote</h2>
+    <blockquote>
+      “The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.”
+      <cite>
+        — Marcel Proust
+        (<a href="https://stanphelps.com/the-voyage-of-discovery-is-not-in-seeking-new-landscapes-but-in-having-new-eyes-marcel-proust/" target="_blank" rel="noopener">source</a>)
+      </cite>
+    </blockquote>
 
-<!-- Footer Include-->
-<div data-include="../components/footer.html"></div>
-<!-- HTMLInclude from Paul-Browne -->
-<script src= "../scripts/include.min.js"></script>
+    <p>
+      <a href="https://alittl70.github.io/">Return to Home Page</a>
+    </p>
+  </main>
 
-        <p> 
-            <a href=" https://alittl70.github.io/"> return to Home Page</a>
-        </p>
+  <!-- Footer Include -->
+  <div data-include="../components/footer.html"></div>
 
-<!-- Accumulus -->
-<script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+  <!-- HTMLInclude from Paul-Browne -->
+  <script src="../scripts/include.min.js"></script>
+
+  <!-- Accumulus -->
+  <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
 
 </body>
 </html>
-

@@ -1,70 +1,40 @@
-<!-- Must start with this first.-->
 <!DOCTYPE html>
 <html lang="en">
-
-<!--Sets the character encoding so text displays correctly.-->
 <head>
-    <meta charset="UTF-8">
-    <!-- Makes the page responsive on mobile devices.-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/default.css">
-
-<!--Title shown on the browser tab.-->
- <title>Alanah Little Adventurous Lion-ITIS 3135 | Welcome Page </title>
- <nav>
-    <a href = "https://webpages.charlotte.edu/alittl70/"> CLT Website  |</a> 
-    <a href = "https://alittl70.github.io/"> GitHub.io  |</a>
-    <a href="https://github.com/alittl70"> GitHub  |</a> 
-    <a href = "https://www.freecodecamp.org/alittl70" > freeCodeCamp  |</a> 
-    <a href = "https://www.linkedin.com/in/alanah-little/" > LinkedIn</a>
-    </nav>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/default.css">
+  <title>Alanah Little Adventurous Lion - ITIS 3135 | Welcome Page</title>
 </head>
 
-<!-- Everything the user sees on the page goes inside the body.-->
 <body>
 
-<!-- Header Include-->
- <div data-include= "../components/header.html" ></div>
+  <!-- Header Include (global header/nav) -->
+  <div data-include="../components/header.html"></div>
 
-<!--
- Local navigation specific to this page.
- This is separate from the global header navigation.
- -->
-<nav>
-    <a href = "https://alittl70.github.io/" > Home Page | </a>
-    <a href = "contract.html" > Contract Page </a>
-    <a href = "website_evaluations.html" > Website Evaluation Page</a>
-</nav>
+  <!-- Local navigation specific to ITIS 3135 pages -->
+  <nav class="site-nav">
+    <a href="https://alittl70.github.io/">Home Page</a>
+    <a href="contract.html">Contract Page</a>
+    <a href="website_evaluations.html">Website Evaluations</a>
+  </nav>
 
-<!--
-Main contents of the webpage.
-is a semantic element that represents
-the primary content of the document. 
--->
-<main>
-
-    
+  <main>
     <h1>Alanah Little Adventurous Lion - ITIS 3135</h1>
-    
 
-    <h2> Welcome </h2>
+    <h2>Welcome</h2>
 
-    
-    <p> This page will contain my work for ITIS 3135.</p>
-    
+    <p>This page will contain my work for ITIS 3135.</p>
+  </main>
 
-    
-</main>
+  <!-- Footer Include -->
+  <div data-include="../components/footer.html"></div>
 
-<!-- Footer Include-->
-<div data-include="../components/footer.html"></div>
+  <!-- HTMLInclude -->
+  <script src="../scripts/include.min.js"></script>
 
-<!-- HTMLInclude from Paul-Browne -->
-<script src= "../scripts/include.min.js"></script>
-
-<!-- Accumulus -->
-<script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+  <!-- Accumulus -->
+  <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
 
 </body>
 </html>
-
