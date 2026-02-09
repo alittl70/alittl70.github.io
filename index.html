@@ -1,65 +1,58 @@
-<!-- Must start with this first.-->
 <!DOCTYPE html>
 <html lang="en">
-
-<!--Sets the character encoding so text displays correctly.-->
 <head>
-    <meta charset="UTF-8">
-    <!-- Makes the page responsive on mobile devices.-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/default.css">
-<!--Title shown on the browser tab.-->
-    <title>Alanah's Charlotte Website | Home Page </title>
-    <nav class = "site-nav"></nav>
-    <a href = "https://webpages.charlotte.edu/alittl70/"> CLT Website |</a> 
-    <a href = "https://alittl70.github.io/"> GitHub.io |</a>
-    <a href="https://github.com/alittl70"> GitHub |</a> 
-    <a href = "https://www.freecodecamp.org/alittl70" > freeCodeCamp |</a> 
-    <a href = "https://www.linkedin.com/in/alanah-little/" > LinkedIn</a>
-   </nav>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/default.css">
+  <title>Alanah's Charlotte Website | Home Page</title>
 </head>
 
-<!-- Everything the user sees on the page goes inside the body.-->
 <body>
 
-<!-- Header Include-->
- <div data-include= "../components/header.html" ></div>
+  <header class="site-header">
+    <nav class="top-links" aria-label="Social links">
+      <a href="https://webpages.charlotte.edu/alittl70/">CLT Website</a>
+      <a href="https://alittl70.github.io/">GitHub.io</a>
+      <a href="https://github.com/alittl70">GitHub</a>
+      <a href="https://www.freecodecamp.org/alittl70">freeCodeCamp</a>
+      <a href="https://www.linkedin.com/in/alanah-little/">LinkedIn</a>
+    </nav>
 
-    <h1> <!-- this is the opening tag-->
-        Alanah's Charlotte Website  <!-- This whole thing is the element-->
-    </h1> <!--this is the closing tag-->
+    <h1>Alanah's Charlotte Website</h1>
 
-<!--
-Main contents of the webpage.
-is a semantic element that represents
-the primary content of the document. 
--->
- <main>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="introduction.html">Introduction</a>
+      <a href="itis3135/index.html">ITIS 3135</a>
+    </nav>
+  </header>
+
+  <main>
     <h2>Home Page</h2>
 
-    <a href="itis3135/index.html">Click here to go to my ITIS 3135 page</a>
-
-    <p> 
-       Welcome to my site! 
-       My name is Alanah and I am a junior here at UNC Charlotte studying Computer Science with a focus on Human-Computer Interaction. 
+    <p>
+      Welcome to my site! My name is Alanah and I am a junior here at UNC Charlotte studying
+      Computer Science with a focus on Human-Computer Interaction.
     </p>
 
-    <h3>  Introduction Page: </h3>
-    <a href = "introduction.html">Click Here</a>
- </main>
+    <p>
+      <a href="itis3135/index.html">Click here to go to my ITIS 3135 page</a>
+    </p>
 
+    <h3>Introduction Page</h3>
+    <p>
+      <a href="introduction.html">Click Here</a>
+    </p>
+  </main>
 
-<!-- Footer Include-->
-<div data-include="../components/footer.html"></div>
+  <!-- Footer Include (keep using if your class requires includes) -->
+  <div data-include="../components/footer.html"></div>
 
-<!-- HTMLInclude from Paul-Browne -->
-<script src= "../scripts/include.min.js"></script>
-    
-<!-- Accumulus -->
-<script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+  <!-- HTMLInclude -->
+  <script src="../scripts/include.min.js"></script>
 
+  <!-- Accumulus -->
+  <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
 
 </body>
 </html>
-
-

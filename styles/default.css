@@ -1,75 +1,93 @@
 /* Personal Site */
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
-    background: #aeebb9;    /*Background color*/
-    color: #1f2937;        /*Sets default color */
-    font-family:  "Trebuchet MS", Arial, sans-serif; /*body font*/
-    line-height: 1.6;
-    margin: 0;
+  background: #aeebb9;           /* Background color */
+  color: #1f2937;               /* Default text color */
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
 }
-/*Header and footer styling*/
-header, footer {
-    background: #ebe7df;    /*Set background color*/
-    padding:1rem 1.5rem;
-    font-family: "Montserrat", Arial, sans-serif;
+
+/* Header and footer styling */
+header,
+footer {
+  background: #ebe7df;
+  padding: 1rem 1.5rem;
+  font-family: "Montserrat", Arial, sans-serif;
+  text-align: center;            /* centers header/footer contents */
 }
-/*Main content layout*/
+
+/* Main content layout */
 main {
-    max-width: 1000px;   /*readable width*/
-    margin: 0 auto;     /*centered container*/
-    padding: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.5rem;
 }
-/* Spacing = proximity */
+
+/* Headings */
 h1 {
-    margin-bottom: 0.75rem;
-    text-align: center;     /*Centering a heading*/
+  margin: 0.75rem 0;             /* cleaner than only margin-bottom */
 }
 
 h2 {
-    margin-top:2rem;
-    margin-bottom: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 p {
-    margin: 0.75rem 0;
+  margin: 0.75rem 0;
 }
-/*Links*/
 
+/* Links (general) */
 a {
-    color: #0000EE;     /*Link colors*/
-    padding: 1rem;
-
+  color: #0000EE;
+  text-decoration: underline;
 }
+
 a:hover {
-    color: #ff0800;     /*Hover color*/
-    text-align: center;
+  color: #ff0800;
 }
 
-
-.site-nav{
-   text-align: center;
-
+/* Navigation */
+.site-nav {
+  display: flex;
+  justify-content: center;       /* centers links */
+  gap: 1rem;                     /* spacing between links */
+  flex-wrap: wrap;               /* wrap on smaller screens */
+  margin-top: 0.75rem;
 }
 
+/* Only nav links get padding (NOT every link on the whole page) */
+.site-nav a {
+  padding: 0.25rem 0.5rem;
+  text-decoration: none;         /* looks cleaner for nav */
+}
 
+.site-nav a:hover {
+  text-decoration: underline;
+}
 
-
-
+/* Figures */
 figure {
-    text-align: center;
-    margin: 1.5rem auto;
+  text-align: center;
+  margin: 1.5rem auto;
 }
 
 figure img {
-    display: block;
-    margin: 1rem auto;
+  display: block;
+  margin: 1rem auto;
 }
 
-figcaption { 
-    font-size: 0.9rem;
-    margin-top:0.5rem;
+figcaption {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
 }
-
 
 
 
