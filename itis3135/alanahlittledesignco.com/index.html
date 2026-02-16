@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alanah Little Design Co. | Services</title>
+
+  <!-- Embedded stylesheet (required) -->
+  <style>
+    /*
+      5-color palette (pick yours from coolors.co, then replace if needed)
+      --ink:     #0B1320 (deep navy)
+      --slate:   #1F2A44 (slate)
+      --mist:    #EEF2F7 (soft light)
+      --coral:   #FF5A5F (accent)
+      --mint:    #2ED3B7 (accent)
+    */
+
+    :root{
+      --ink: #0B1320;
+      --slate: #1F2A44;
+      --mist: #EEF2F7;
+      --coral: #FF5A5F;
+      --mint: #2ED3B7;
+
+      --max: 980px;
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body{
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, var(--ink), #101c33);
+      color: var(--mist);
+      line-height: 1.6;
+    }
+
+    header{
+      border-bottom: 2px solid rgba(238, 242, 247, 0.15);
+      background: rgba(11, 19, 32, 0.65);
+      backdrop-filter: blur(8px);
+    }
+
+    header > div,
+    main,
+    footer > div{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.25rem;
+    }
+
+    /* H1 + logo side-by-side (required) */
+    .brand{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    h1{
+      margin: 0;
+      font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+      letter-spacing: 0.2px;
+    }
+
+    .tagline{
+      margin: 0.35rem 0 0;
+      color: rgba(238, 242, 247, 0.8);
+      max-width: 65ch;
+    }
+
+    /* Simple inline logo (you can replace with your own image later) */
+    .logo{
+      width: 64px;
+      height: 64px;
+      flex: 0 0 auto;
+    }
+
+    main{
+      padding-top: 1.5rem;
+      padding-bottom: 2rem;
+    }
+
+    h2{
+      margin: 0 0 0.75rem;
+      font-size: 1.35rem;
+      color: var(--mist);
+    }
+
+    section{
+      background: rgba(238, 242, 247, 0.06);
+      border: 1px solid rgba(238, 242, 247, 0.12);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      margin: 1rem 0;
+    }
+
+    /* CRAP: repetition + contrast with consistent accents */
+    section strong{
+      color: var(--mint);
+    }
+
+    /* Non-standard bullet style (required) */
+    ul{
+      margin: 0.75rem 0 0;
+      padding-left: 1.1rem;
+    }
+    li{
+      margin: 0.45rem 0;
+    }
+    li::marker{
+      content: "✦ ";
+      color: var(--coral);
+      font-weight: 700;
+    }
+
+    /* Contact block formatting */
+    .contact{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem 1rem;
+      align-items: start;
+    }
+
+    .contact div{
+      background: rgba(11, 19, 32, 0.55);
+      border: 1px solid rgba(238, 242, 247, 0.12);
+      border-radius: 12px;
+      padding: 0.9rem;
+    }
+
+    .contact h3{
+      margin: 0 0 0.35rem;
+      font-size: 1rem;
+      letter-spacing: 0.2px;
+      color: rgba(238, 242, 247, 0.9);
+    }
+
+    address{
+      font-style: normal;
+      margin: 0;
+      color: rgba(238, 242, 247, 0.85);
+    }
+
+    footer{
+      border-top: 2px solid rgba(238, 242, 247, 0.15);
+      background: rgba(11, 19, 32, 0.65);
+    }
+
+    footer p{
+      margin: 0;
+      color: rgba(238, 242, 247, 0.75);
+    }
+
+    @media (max-width: 720px){
+      .contact{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="brand">
+      <div>
+        <!-- H1 includes firm name (required) -->
+        <h1>Alanah Little Design Co.</h1>
+        <p class="tagline">
+          A small-but-mighty web design & development studio focused on clean UI, accessible structure, and practical builds that actually ship.
+        </p>
+      </div>
+
+      <!-- Logo next to heading one (required) -->
+      <!-- You can replace this inline SVG with an image from openclipart later if you want -->
+      <svg class="logo" viewBox="0 0 64 64" aria-label="Alanah Little Design Co. logo" role="img">
+        <defs>
+          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#FF5A5F"></stop>
+            <stop offset="1" stop-color="#2ED3B7"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="32" cy="32" r="28" fill="url(#g)"></circle>
+        <path d="M20 38 L32 16 L44 38 Z" fill="#0B1320" opacity="0.95"></path>
+        <path d="M24 40 H40" stroke="#EEF2F7" stroke-width="3" stroke-linecap="round" opacity="0.9"></path>
+      </svg>
+    </div>
+  </header>
+
+  <main>
+    <!-- H2 is the name of the page (required) -->
+    <h2>Services</h2>
+
+    <!-- One paragraph describing your company (required) -->
+    <section>
+      <p>
+        Alanah Little Design Co. builds modern, user-centered websites for students, creators, and small businesses.
+        I combine thoughtful UX with solid front-end development so your site looks great, loads fast, and is easy to maintain.
+      </p>
+    </section>
+
+    <!-- Unordered list with non-standard bullet style + 5–10 amazing things (required) -->
+    <section>
+      <p><strong>What makes my firm different:</strong></p>
+      <ul>
+        <li>Accessibility-first structure using clean semantic HTML.</li>
+        <li>CRAP-based layouts that feel organized and intentional.</li>
+        <li>Mobile-friendly design that still looks good on desktop.</li>
+        <li>Reusable components (headers/footers) to keep pages consistent.</li>
+        <li>Readable CSS with simple, maintainable styling choices.</li>
+        <li>UX-focused decisions: clarity, hierarchy, and scannability.</li>
+        <li>Performance-minded assets and lightweight styling.</li>
+        <li>Professional polish: spacing, alignment, and typography that “click.”</li>
+      </ul>
+    </section>
+
+    <!-- One paragraph outlining what you can do for a client (required) -->
+    <section>
+      <p>
+        For clients, I can design and develop a multi-page website, improve an existing layout, clean up HTML/CSS for readability,
+        and create a consistent visual system (colors, typography, spacing) that matches your brand. I also provide basic guidance
+        on content structure so your site communicates clearly and feels easy to navigate.
+      </p>
+    </section>
+
+    <!-- Nicely formatted contact section (required) -->
+    <section>
+      <h2>Contact</h2>
+
+      <div class="contact">
+        <div>
+          <h3>Phone</h3>
+          <p>(704) 555-0197</p>
+        </div>
+
+        <div>
+          <h3>Email</h3>
+          <p>hello@alanahlittledesignco.com</p>
+        </div>
+
+        <div>
+          <h3>Address</h3>
+          <address>
+            9201 University City Blvd<br />
+            Charlotte, NC 28223
+          </address>
+        </div>
+
+        <div>
+          <h3>Hours</h3>
+          <p>Mon–Fri: 10am–6pm (ET)</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <!-- Footer line required -->
+      <p>Page created by Alanah Little Design Co. &copy; 2026</p>
+    </div>
+  </footer>
+</body>
+</html>
