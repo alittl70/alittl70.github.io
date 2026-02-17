@@ -3,40 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/default.css">
-  <title>Alanah Little Adventurous Lion ITIS 3135 | Welcome Page</title>
+  <link rel="stylesheet" href="../styles/default.css">
+  <title>Alanah Little | ITIS 3135 | Welcome</title>
 </head>
 
 <body>
 
-  <!-- Header Include (global header/nav) -->
-  <div data-include="../components/header.html"></div>
+  <!-- Header Component Include (global header/nav) -->
+  <header data-include="../components/header.html"></header>
 
   <!-- Local navigation specific to ITIS 3135 pages -->
-  <nav class="site-nav">
-    <a href="https://alittl70.github.io/">Home Page</a>
-    <a href="contract.html">Contract Page</a>
-    <a href = "/itis3135/website_evaluations.html" > Website Evaluation Page</a>
-
+  <nav class="site-nav" aria-label="ITIS 3135 navigation">
+    <a href="/index.html">Home Page</a>
+    <a href="/itis3135/contract.html">Contract Page</a>
+    <a href="/itis3135/website_evaluations.html">Website Evaluation Page</a>
   </nav>
 
   <main>
-    <h1>Alanah Little Adventurous Lion | ITIS 3135</h1>
-
+    <h1>ITIS 3135</h1>
     <h2>Welcome</h2>
 
     <p>This page will contain my work for ITIS 3135.</p>
   </main>
 
-  <p>
-  Page designed by 
-  <a href="alanahlittledesignco.com/">Alanah Little Design Co.</a> &copy; 2026
-</p>
+  <!-- Footer Component Include -->
+  <footer data-include="../components/footer.html"></footer>
 
-  <!-- Footer Include -->
-  <div data-include="../components/footer.html"></div>
-
-  <!-- HTMLInclude -->
+  <!-- HTMLInclude (MUST come after include placeholders) -->
   <script src="../scripts/include.min.js"></script>
 
   <!-- Accumulus -->

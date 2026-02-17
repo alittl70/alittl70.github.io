@@ -3,56 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/default.css">
-  <title>Website Evaluations | ITIS 3135 </title>
+  <link rel="stylesheet" href="../styles/default.css">
+  <title>Website Evaluations | ITIS 3135</title>
 </head>
-
 
 <body>
 
-  <!-- Header Include (global header/nav) -->
-  <div data-include="../components/header.html"></div>
+  <!-- Header Component Include (global header/nav) -->
+  <header data-include="../components/header.html"></header>
 
   <!-- Local navigation specific to ITIS 3135 pages -->
-  <nav class="site-nav">
-    <a href="https://alittl70.github.io/">Home Page</a>
-    <a href="contract.html">Contract Page</a>
-    <a href="introduction.html">Introduction</a>
+  <nav class="site-nav" aria-label="ITIS 3135 navigation">
+    <a href="/index.html">Home Page</a>
+    <a href="/itis3135/contract.html">Contract Page</a>
+    <a href="/introduction.html">Introduction</a>
   </nav>
 
   <main>
-    <h1>Alanah Little Adventurous Lion | ITIS 3135</h1>
-
+    <h1>ITIS 3135</h1>
     <h2>Website Evaluations</h2>
 
-   <h3>Lacoste</h3>
-   <ul>
-        <li>Contrast: The site uses strong visual contrast between background, text, and product imagery, making key elements like headings, buttons, and featured collections stand out clearly and guide user attention effectively.</li>
-        <li>Repetition: Consistent use of typography, color palette (especially the signature green/white), button styles, and layout patterns creates a cohesive brand identity and predictable user experience across sections. </li>
-        <li>Alignment: Content is well-aligned within a structured grid, with centered and evenly spaced elements that create a balanced, organized, and professional visual flow throughout the page. </li>
-        <li>Proximity: Related items (such as product categories, images, and descriptions) are grouped logically, helping users quickly understand relationships between elements and navigate the page without confusion. </li>
-   </ul>
+    <section>
+      <h3>Lacoste</h3>
+      <ul>
+        <li><strong>Contrast:</strong> The site uses strong visual contrast between background, text, and product imagery, making key elements like headings, buttons, and featured collections stand out clearly and guide user attention effectively.</li>
+        <li><strong>Repetition:</strong> Consistent use of typography, color palette (especially the signature green/white), button styles, and layout patterns creates a cohesive brand identity and predictable user experience across sections.</li>
+        <li><strong>Alignment:</strong> Content is well-aligned within a structured grid, with centered and evenly spaced elements that create a balanced, organized, and professional visual flow throughout the page.</li>
+        <li><strong>Proximity:</strong> Related items (such as product categories, images, and descriptions) are grouped logically, helping users quickly understand relationships between elements and navigate the page without confusion.</li>
+      </ul>
+    </section>
 
-   <h3>Pacific Northwest X-Ray Inc.</h3>
-   <ul>
-        <li>Contrast: The website has weak contrast between text and background in several areas, making some content harder to read. Important elements such as headings and navigation do not stand out strongly, which reduces visual hierarchy and user focus. </li>
-        <li>Repetition: There is limited consistent use of design elements such as fonts, colors, and layout patterns. The lack of repeated visual structure makes the site feel less cohesive and less professionally unified. </li>
-        <li>Alignment: Many elements appear loosely aligned, with inconsistent spacing and positioning. This creates a slightly cluttered and unorganized layout that can make scanning and navigation more difficult for users. </li>
-        <li>Proximity: Related information is not always grouped clearly, which can make it harder for users to understand relationships between sections. Better grouping of related content would improve readability and overall usability. </li>
-   </ul>
-
-
+    <section>
+      <h3>Pacific Northwest X-Ray Inc.</h3>
+      <ul>
+        <li><strong>Contrast:</strong> The website has weak contrast between text and background in several areas, making some content harder to read. Important elements such as headings and navigation do not stand out strongly, which reduces visual hierarchy and user focus.</li>
+        <li><strong>Repetition:</strong> There is limited consistent use of design elements such as fonts, colors, and layout patterns. The lack of repeated visual structure makes the site feel less cohesive and less professionally unified.</li>
+        <li><strong>Alignment:</strong> Many elements appear loosely aligned, with inconsistent spacing and positioning. This creates a slightly cluttered and unorganized layout that can make scanning and navigation more difficult.</li>
+        <li><strong>Proximity:</strong> Related information is not always grouped clearly, which can make it harder for users to understand relationships between sections. Better grouping of related content would improve readability and overall usability.</li>
+      </ul>
+    </section>
   </main>
 
-  <p>
-  Page designed by 
-  <a href="alanahlittledesignco.com/">Alanah Little Design Co.</a> &copy; 2026
-</p>
+  <!-- Footer Component Include -->
+  <footer data-include="../components/footer.html"></footer>
 
-  <!-- Footer Include -->
-  <div data-include="../components/footer.html"></div>
-
-  <!-- HTMLInclude -->
+  <!-- HTMLInclude (must come after include placeholders) -->
   <script src="../scripts/include.min.js"></script>
 
   <!-- Accumulus -->

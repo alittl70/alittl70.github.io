@@ -9,26 +9,8 @@
 
 <body>
 
-  <header class="site-header">
-    <nav class="top-links" aria-label="Social links">
-      <a href="https://webpages.charlotte.edu/alittl70/">CLT Website</a>
-      <a href="https://alittl70.github.io/">GitHub.io</a>
-      <a href="https://github.com/alittl70">GitHub</a>
-      <a href="https://www.freecodecamp.org/alittl70">freeCodeCamp</a>
-      <a href="https://www.linkedin.com/in/alanah-little/">LinkedIn</a>
-    </nav>
-
-    <h1>Alanah's Charlotte Website</h1>
-
-    <nav class="site-nav" aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="introduction.html">Introduction</a>
-      <a href="itis3135/index.html">ITIS 3135</a>
-      <a href="/itis3135/website_evaluations.html" > Website Evaluation Page</a>
-      <a href="/certifications/index.html"> Certifications</a>
-
-    </nav>
-  </header>
+  <!-- HEADER COMPONENT INCLUDE -->
+  <header data-include="components/header.html"></header>
 
   <main>
     <h2>Home Page</h2>
@@ -47,16 +29,12 @@
       <a href="introduction.html">Click Here</a>
     </p>
   </main>
-<p>
-  Page designed by 
-  <a href="alanahlittledesignco.com/">Alanah Little Design Co.</a> &copy; 2026
-</p>
 
-  <!-- Footer Include (keep using if your class requires includes) -->
-  <div data-include="../components/footer.html"></div>
+  <!-- FOOTER COMPONENT INCLUDE -->
+  <footer data-include="components/footer.html"></footer>
 
-  <!-- HTMLInclude -->
-  <script src="../scripts/include.min.js"></script>
+  <!-- HTML Include (after the include placeholders) -->
+  <script src="scripts/include.min.js"></script>
 
   <!-- Accumulus -->
   <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
