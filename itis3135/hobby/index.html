@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Taekwondo Journey</title>
+    <link rel="icon" href="images/favicon.ico">
+    <style>
+    body {
+        font-family: Poppins, Arial, sans-serif;
+        margin: 0;
+        background-color: #0f172a;
+        color: #f8fafc;
+        line-height: 1.6;
+    }
+
+    header {
+        background: #1e293b;
+        padding: 20px;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    nav a {
+        margin: 0 10px;
+        color: #facc15;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    main {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    section {
+        display: none;
+        padding: 20px;
+        background: #1e293b;
+        border-radius: 12px;
+        margin: 20px 0;
+    }
+
+    section.active {
+        display: block;
+    }
+
+    figure {
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    figure img {
+        width: 300px;
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    figcaption {
+        margin-top: 8px;
+        font-weight: bold;
+    }
+
+    footer {
+        background: #1e293b;
+        text-align: center;
+        padding: 15px;
+    }
+
+    footer a {
+        color: #facc15;
+        text-decoration: none;
+    }
+
+    footer a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Taekwondo Journey</h1>
+    <nav>
+        <a href="#" onclick="showSection('what'); return false;">What</a> 🥋
+        <a href="#" onclick="showSection('who'); return false;">Who</a> 🥋
+        <a href="#" onclick="showSection('when'); return false;">When</a> 🥋
+        <a href="#" onclick="showSection('where'); return false;">Where</a> 🥋
+        <a href="#" onclick="showSection('how'); return false;">How</a> 🥋
+        <a href="#" onclick="showSection('why'); return false;">Why</a> 🥋
+        <a href="#" onclick="showSection('ai'); return false;">AI Prompts</a>
+    </nav>
+</header>
+
+<main>
+    <section id="what" class="active">
+        <h2>What is Taekwondo?</h2>
+        <p>Taekwondo is a Korean martial art that focuses on high, fast kicks, discipline, and self-defense. It combines physical training with mental focus and respect for others.</p>
+        <p>It is practiced worldwide and is even an Olympic sport. Taekwondo emphasizes balance, coordination, and control while teaching important life skills.</p>
+        <figure>
+            <img src="images/kick.png" alt="Taekwondo athlete performing a high kick during training">
+            <figcaption>High kick in training</figcaption>
+        </figure>
+        <p><i>AI prompt: “photorealistic taekwondo athlete performing high kick in dojang”</i></p>
+    </section>
+
+    <section id="who">
+        <h2>Who I Am</h2>
+        <p>I personally trained in Taekwondo for 7 years and worked as an instructor for 5 years, helping students improve their skills and build confidence.</p>
+        <p>It taught me discipline, patience, and leadership.</p>
+        <figure>
+            <img src="images/instructor.png" alt="Taekwondo instructor teaching students in class">
+            <figcaption>Teaching students</figcaption>
+        </figure>
+        <p><i>AI prompt: “taekwondo instructor teaching students in class”</i></p>
+    </section>
+
+    <section id="when">
+        <h2>When to Train</h2>
+        <p>Taekwondo training usually takes place in the evenings or on weekends, depending on the class schedule. Consistent practice is important for improving technique and strength.</p>
+        <p>Many students train multiple times a week to prepare for belt tests, competitions, or personal fitness goals.</p>
+        <figure>
+            <img src="images/indoors.png" alt="Taekwondo class training indoors at night">
+            <figcaption>Evening training session</figcaption>
+        </figure>
+        <p><i>AI prompt: “martial arts class training at night indoors”</i></p>
+    </section>
+
+    <section id="where">
+        <h2>Where to Practice</h2>
+        <p>Taekwondo is practiced in dojangs, which are martial arts training studios designed with padded floors and open space for movement.</p>
+        <p>Training can also take place at home or outdoors, but dojangs provide the best environment for structured learning and instruction.</p>
+        <figure>
+            <img src="images/dojang.png" alt="Clean taekwondo dojang with mats and mirrors">
+            <figcaption>Traditional dojang</figcaption>
+        </figure>
+        <p><i>AI prompt: “clean martial arts studio with mats and mirrors”</i></p>
+    </section>
+
+    <section id="how">
+        <h2>How to Get Started</h2>
+        <p>To start Taekwondo, beginners usually join a local dojang and enroll in beginner classes. These classes teach basic stances, kicks, and forms.</p>
+        <p>Students wear a uniform called a dobok and progress through belt levels as they develop their skills and knowledge.</p>
+        <figure>
+            <img src="images/whitebelt.png" alt="Beginner practicing a taekwondo stance">
+            <figcaption>Beginner stance</figcaption>
+        </figure>
+        <p><i>AI prompt: “beginner taekwondo stance tutorial pose”</i></p>
+    </section>
+
+    <section id="why">
+        <h2>Why Taekwondo Matters</h2>
+        <p>Taekwondo builds confidence, discipline, and physical strength. It helps individuals develop focus and resilience while improving overall health.</p>
+        <p>For me, Taekwondo has been more than just a sport. It has shaped my mindset, taught me perseverance, and helped me grow as both a leader and an individual.</p>
+        <figure>
+            <img src="images/blackbelt.png" alt="Confident martial artist standing strong in uniform">
+            <figcaption>Confidence through training</figcaption>
+        </figure>
+        <p><i>AI prompt: “confident martial artist standing strong in uniform”</i></p>
+    </section>
+
+    <section id="ai">
+        <h2>AI Prompts</h2>
+        <p>This page was created with AI assistance for image generation, content planning, and section ideas.</p>
+        <p><strong>AI model used:</strong> ChatGPT / DALL·E</p>
+        <ul>
+            <li>“photorealistic taekwondo athlete performing high kick in dojang”</li>
+            <li>“taekwondo instructor teaching students in class”</li>
+            <li>“martial arts class training at night indoors”</li>
+            <li>“clean martial arts studio with mats and mirrors”</li>
+            <li>“beginner taekwondo stance tutorial pose”</li>
+            <li>“confident martial artist standing strong in uniform”</li>
+            <li>“Create content for a taekwondo hobby website with who, what, when, where, how, and why sections”</li>
+        </ul>
+    </section>
+</main>
+
+<footer>
+    <p>Designed by <a href="../index.html">Adventurous Lion</a></p>
+    <p>
+        <a href="https://validator.w3.org/">HTML Validator</a> |
+        <a href="https://jigsaw.w3.org/css-validator/">CSS Validator</a> |
+        <a href="https://wave.webaim.org/">Accessibility Validator</a>
+    </p>
+</footer>
+
+<script>
+    function showSection(id) {
+        const sections = document.querySelectorAll("section");
+        sections.forEach((section) => section.classList.remove("active"));
+        document.getElementById(id).classList.add("active");
+    }
+</script>
+
+</body>
+</html>
