@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/default.css">
+  <title>Alanah's Charlotte Website | Introduction Form</title>
+
+  <script defer src="scripts/include.js"></script>
+  <script defer src="scripts/introduction.js"></script>
+  <script defer src="scripts/generate_html.js"></script>
+  <script defer src="scripts/generate_json.js"></script>
+</head>
+
+<body>
+
+  <header data-include="components/header.html"></header>
+
+  <main>
+    <h2>Introduction Form</h2>
+    <h3>Please submit the form below.</h3>
+
+    <!--Form-->
+    <form id="form">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" value="Alanah" placeholder="Enter first name" required>
+
+      <label for="middleName">Middle Name / Initial:</label>
+      <input type="text" id="middleName" name="middleName" placeholder="Optional">
+
+      <label for="nickname">Nickname / Preferred Name:</label>
+      <input type="text" id="nickname" name="nickname" placeholder="Optional">
+
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" value="Little" placeholder="Enter last name" required>
+
+      <label for="acknowledgement">Acknowledgment Statement:</label>
+      <input type="text" id="acknowledgement" name="acknowledgement" placeholder="Enter acknowledgment statement" required>
+
+      <label for="ackDate">Acknowledgment Date:</label>
+      <input type="date" id="ackDate" name="ackDate" required>
+
+      <label for="mascotAdjective">Mascot Adjective:</label>
+      <input type="text" id="mascotAdjective" name="mascotAdjective" placeholder="Ex: Adventurous" required>
+
+      <label for="mascotAnimal">Mascot Animal:</label>
+      <input type="text" id="mascotAnimal" name="mascotAnimal" placeholder="Ex: Lion" required>
+
+      <label for="divider">Divider:</label>
+      <input type="text" id="divider" name="divider" placeholder="Ex: ~ or | or ♥" required>
+
+      <label for="picture">Picture:</label>
+      <input type="file" id="picture" name="picture" accept="image/*">
+
+      <label for="pictureCaption">Picture Caption:</label>
+      <input type="text" id="pictureCaption" name="pictureCaption" placeholder="Enter picture caption" required>
+
+      <label for="personalStatement">Personal Statement:</label>
+      <textarea id="personalStatement" name="personalStatement" placeholder="Enter personal statement" required></textarea>
+
+      <label for="personalBackground">Personal Background:</label>
+      <textarea id="personalBackground" name="personalBackground" placeholder="Enter personal background" required></textarea>
+
+      <label for="professionalBackground">Professional Background:</label>
+      <textarea id="professionalBackground" name="professionalBackground" placeholder="Enter professional background" required></textarea>
+
+      <label for="academicBackground">Academic Background:</label>
+      <textarea id="academicBackground" name="academicBackground" placeholder="Enter academic background" required></textarea>
+
+      <label for="subjectBackground">Subject Background:</label>
+      <textarea id="subjectBackground" name="subjectBackground" placeholder="Enter subject background" required></textarea>
+
+      <label for="primaryComputer">Primary Computer Platform:</label>
+      <textarea id="primaryComputer" name="primaryComputer" placeholder="Enter primary computer info" required></textarea>
+
+      <label for="quote">Favorite Quote:</label>
+      <textarea id="quote" name="quote" placeholder="Enter quote" required></textarea>
+
+      <label for="quoteAuthor">Quote Author:</label>
+      <input type="text" id="quoteAuthor" name="quoteAuthor" placeholder="Enter quote author" required>
+
+      <label for="funnyThing">Funny Thing:</label>
+      <textarea id="funnyThing" name="funnyThing" placeholder="Optional"></textarea>
+
+      <label for="extraShare">Something Else to Share:</label>
+      <textarea id="extraShare" name="extraShare" placeholder="Optional"></textarea>
+
+      <!--Courses-->
+    <div id="coursesSection">
+        <h3>Courses</h3>
+
+        <div class="course-entry">
+        <label>Department:</label>
+        <input type="text" name="courseDepartment[]" placeholder="Ex: ITIS">
+
+        <label>Number:</label>
+        <input type="text" name="courseNumber[]" placeholder="Ex: 3135">
+
+        <label>Name:</label>
+        <input type="text" name="courseName[]" placeholder="Course name">
+
+        <label>Reason:</label>
+        <textarea name="courseReason[]" placeholder="Why are you taking this course?"></textarea>
+    </div>
+
+    <button type="button" id="addCourseBtn">Add Course</button>
+    </div>
+
+    <!--Links-->
+    <div id="linksSection">
+    <h3>Links</h3>
+
+        <label for="link1">LinkedIn:</label>
+        <input type="url" id="link1" name="link1" placeholder="Enter LinkedIn URL">
+
+        <label for="link2">GitHub:</label>
+        <input type="url" id="link2" name="link2" placeholder="Enter GitHub URL">
+
+        <label for="link3">GitHub Pages:</label>
+        <input type="url" id="link3" name="link3" placeholder="Enter GitHub Pages URL">
+
+        <label for="link4">freeCodeCamp:</label>
+        <input type="url" id="link4" name="link4" placeholder="Enter freeCodeCamp URL">
+
+        <label for="link5">Codecademy:</label>
+        <input type="url" id="link5" name="link5" placeholder="Enter Codecademy URL">
+    </div>
+
+    <!--Buttons-->
+    <div class="form-buttons">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+        <button type="button" id="clearBtn">Clear</button>
+        <button type="button" id="generateHTMLBtn">Generate HTML</button>
+        <button type="button" id="generateJSONBtn">Generate JSON</button>
+    </div>
+
+    </form>
+
+    <section id="output"></section>
+  </main>
+
+  <footer data-include="components/footer.html"></footer>
+
+</body>
+</html>
