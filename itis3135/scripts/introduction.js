@@ -1,6 +1,6 @@
 let currentImageSrc = "/images/trip.jpg";
-let initialCoursesMarkup = "";
-let initialLinksMarkup = "";
+let initialFormMarkup = "";
+let initialTitle = "Introduction Form";
 
 function escapeHtml(text) {
   return String(text)
@@ -11,8 +11,23 @@ function escapeHtml(text) {
     .replaceAll("'", "&#039;");
 }
 
-function getCourseData() {
-  const groups = document.querySelectorAll('input[name="courseGroup[]"]');
+function formatDisplayName(data) {
+  let fullName = data.firstName;
+
+  if (data.middleName) {
+    fullName += ` ${data.middleName}`;
+  }
+
+  if (data.nickname) {
+    fullName += ` "${data.nickname}"`;
+  }
+
+  fullName += ` ${data.lastName}`;
+
+  return fullName;
+}
+
+function getCourses() {
   const departments = document.querySelectorAll('input[name="courseDepartment[]"]');
   const numbers = document.querySelectorAll('input[name="courseNumber[]"]');
   const names = document.querySelectorAll('input[name="courseName[]"]');
@@ -20,9 +35,8 @@ function getCourseData() {
 
   const courses = [];
 
-  for (let i = 0; i < groups.length; i++) {
+  for (let i = 0; i < departments.length; i++) {
     courses.push({
-      group: groups[i].value.trim(),
       department: departments[i].value.trim(),
       number: numbers[i].value.trim(),
       name: names[i].value.trim(),
@@ -33,27 +47,27 @@ function getCourseData() {
   return courses;
 }
 
-function getLinkData() {
+function getLinks() {
   return [
     {
-      label: document.getElementById("linkLabel1").value.trim(),
-      url: document.getElementById("linkUrl1").value.trim()
+      name: document.getElementById("linkName1").value.trim(),
+      href: document.getElementById("linkHref1").value.trim()
     },
     {
-      label: document.getElementById("linkLabel2").value.trim(),
-      url: document.getElementById("linkUrl2").value.trim()
+      name: document.getElementById("linkName2").value.trim(),
+      href: document.getElementById("linkHref2").value.trim()
     },
     {
-      label: document.getElementById("linkLabel3").value.trim(),
-      url: document.getElementById("linkUrl3").value.trim()
+      name: document.getElementById("linkName3").value.trim(),
+      href: document.getElementById("linkHref3").value.trim()
     },
     {
-      label: document.getElementById("linkLabel4").value.trim(),
-      url: document.getElementById("linkUrl4").value.trim()
+      name: document.getElementById("linkName4").value.trim(),
+      href: document.getElementById("linkHref4").value.trim()
     },
     {
-      label: document.getElementById("linkLabel5").value.trim(),
-      url: document.getElementById("linkUrl5").value.trim()
+      name: document.getElementById("linkName5").value.trim(),
+      href: document.getElementById("linkHref5").value.trim()
     }
   ];
 }
@@ -69,299 +83,260 @@ function getFormData() {
     mascotAdjective: document.getElementById("mascotAdjective").value.trim(),
     mascotAnimal: document.getElementById("mascotAnimal").value.trim(),
     divider: document.getElementById("divider").value.trim(),
-    pictureCaption: document.getElementById("pictureCaption").value.trim(),
+    image: currentImageSrc,
+    imageCaption: document.getElementById("pictureCaption").value.trim(),
     personalStatement: document.getElementById("personalStatement").value.trim(),
     personalBackground: document.getElementById("personalBackground").value.trim(),
     professionalBackground: document.getElementById("professionalBackground").value.trim(),
     academicBackground: document.getElementById("academicBackground").value.trim(),
-    primaryWorkComputer: document.getElementById("primaryWorkComputer").value.trim(),
-    backupWorkComputer: document.getElementById("backupWorkComputer").value.trim(),
+    subjectBackground: document.getElementById("subjectBackground").value.trim(),
+    primaryComputer: document.getElementById("primaryComputer").value.trim(),
+    coursesBackground: document.getElementById("coursesBackground").value.trim(),
     funnyThing: document.getElementById("funnyThing").value.trim(),
     extraShare: document.getElementById("extraShare").value.trim(),
-    quote: "The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.",
-    quoteAuthor: "Marcel Proust",
-    quoteSource: "https://stanphelps.com/the-voyage-of-discovery-is-not-in-seeking-new-landscapes-but-in-having-new-eyes-marcel-proust/",
-    courses: getCourseData(),
-    links: getLinkData()
+    quote: document.getElementById("quote").value.trim(),
+    quoteAuthor: document.getElementById("quoteAuthor").value.trim(),
+    courses: getCourses(),
+    links: getLinks()
   };
 }
 
-function buildGroupedCoursesHtml(courses) {
-  const grouped = {};
+function buildIntroHtml(data) {
+  const nameLine = `${escapeHtml(formatDisplayName(data))} ${escapeHtml(data.divider)} ${escapeHtml(data.mascotAdjective)} ${escapeHtml(data.mascotAnimal)}`;
 
-  courses.forEach((course) => {
-    const groupName = course.group || "Courses";
-    if (!grouped[groupName]) {
-      grouped[groupName] = [];
-    }
-    grouped[groupName].push(course);
-  });
-
-  let html = "";
-
-  Object.keys(grouped).forEach((groupName) => {
-    html += `
+  const coursesHtml = data.courses
+    .map((course) => `
       <li>
-        <strong>${escapeHtml(groupName)}</strong>
-        <ol>
-    `;
-
-    grouped[groupName].forEach((course) => {
-      html += `
-          <li>${escapeHtml(course.department)} ${escapeHtml(course.number)} - ${escapeHtml(course.name)}: ${escapeHtml(course.reason)}</li>
-      `;
-    });
-
-    html += `
-        </ol>
+        <strong>${escapeHtml(course.department)} ${escapeHtml(course.number)} - ${escapeHtml(course.name)}</strong>:
+        ${escapeHtml(course.reason)}
       </li>
-    `;
-  });
+    `)
+    .join("");
 
-  return html;
-}
-
-function renderIntroductionPage(data, headingText) {
-  const groupedCoursesHtml = buildGroupedCoursesHtml(data.courses);
-
-  const funnyFactItem = data.funnyThing
-    ? `<li><strong>Funny / Interesting Fact:</strong> ${escapeHtml(data.funnyThing)}</li>`
-    : "";
-
-  const extraShareItem = data.extraShare
-    ? `<li><strong>I’d also like to share:</strong> ${escapeHtml(data.extraShare)}</li>`
-    : "";
+  const linksHtml = data.links
+    .map((link) => `
+      <li>
+        <a href="${escapeHtml(link.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.name)}</a>
+      </li>
+    `)
+    .join("");
 
   return `
-    <h2>${escapeHtml(headingText)}</h2>
+    <h3>${nameLine}</h3>
 
     <figure>
-      <img src="${escapeHtml(currentImageSrc)}" alt="Photo of ${escapeHtml(data.firstName)} ${escapeHtml(data.lastName)}" width="400">
-      <figcaption>${escapeHtml(data.pictureCaption)}</figcaption>
+      <img src="${escapeHtml(data.image)}" alt="Picture of ${escapeHtml(data.firstName)} ${escapeHtml(data.lastName)}">
+      <figcaption>${escapeHtml(data.imageCaption)}</figcaption>
     </figure>
 
-    <p>
-      ${escapeHtml(data.personalStatement)}
-    </p>
+    <p>${escapeHtml(data.personalStatement)}</p>
 
-    <h3>Fun Facts About Me</h3>
     <ul>
       <li><strong>Personal Background:</strong> ${escapeHtml(data.personalBackground)}</li>
       <li><strong>Professional Background:</strong> ${escapeHtml(data.professionalBackground)}</li>
       <li><strong>Academic Background:</strong> ${escapeHtml(data.academicBackground)}</li>
-      <li><strong>Primary Work Computer:</strong> ${escapeHtml(data.primaryWorkComputer)}</li>
-      <li><strong>Backup Work Computer / Location Plan:</strong> ${escapeHtml(data.backupWorkComputer)}</li>
-      ${funnyFactItem}
-      ${extraShareItem}
+      <li><strong>Background in this Subject:</strong> ${escapeHtml(data.subjectBackground)}</li>
+      <li><strong>Primary Computer Platform:</strong> ${escapeHtml(data.primaryComputer)}</li>
+      <li><strong>Courses I’m Taking & Why:</strong> ${escapeHtml(data.coursesBackground)}</li>
+      <li><strong>Acknowledgement:</strong> ${escapeHtml(data.acknowledgement)} (${escapeHtml(data.ackDate)})</li>
+      ${data.funnyThing ? `<li><strong>Funny Thing:</strong> ${escapeHtml(data.funnyThing)}</li>` : ""}
+      ${data.extraShare ? `<li><strong>Something I Would Like to Share:</strong> ${escapeHtml(data.extraShare)}</li>` : ""}
     </ul>
 
-    <h3>Courses I’m Taking &amp; Why</h3>
-    <ol>
-      ${groupedCoursesHtml}
-    </ol>
-
-    <h3>Favorite Quote</h3>
-    <blockquote>
-      “${escapeHtml(data.quote)}”
-      <cite>
-        — ${escapeHtml(data.quoteAuthor)}
-        (<a href="${escapeHtml(data.quoteSource)}" target="_blank" rel="noopener">source</a>)
-      </cite>
-    </blockquote>
+    <h3>Courses</h3>
+    <ul>
+      ${coursesHtml}
+    </ul>
 
     <p>
-      <a href="intro_form.html">Reset Form</a>
+      <strong>Quote:</strong> “${escapeHtml(data.quote)}”
+      <br>
+      <em>— ${escapeHtml(data.quoteAuthor)}</em>
     </p>
+
+    <h3>Links</h3>
+    <ul>
+      ${linksHtml}
+    </ul>
+
+    <div class="reset-link-wrap">
+      <a href="#" id="resetProgressLink">Reset and start again</a>
+    </div>
   `;
 }
 
-function buildHtmlCode(data) {
-  const groupedCoursesHtml = buildGroupedCoursesHtml(data.courses);
-
-  const funnyFactItem = data.funnyThing
-    ? `      <li><strong>Funny / Interesting Fact:</strong> ${escapeHtml(data.funnyThing)}</li>\n`
-    : "";
-
-  const extraShareItem = data.extraShare
-    ? `      <li><strong>I’d also like to share:</strong> ${escapeHtml(data.extraShare)}</li>\n`
-    : "";
-
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/default.css">
-  <title>Introduction HTML</title>
-</head>
-<body>
-  <header data-include="components/header.html"></header>
-
-  <main>
-    <h2>Introduction HTML</h2>
-
-    <figure>
-      <img src="${escapeHtml(currentImageSrc)}" alt="Photo of ${escapeHtml(data.firstName)} ${escapeHtml(data.lastName)}" width="400">
-      <figcaption>${escapeHtml(data.pictureCaption)}</figcaption>
-    </figure>
-
-    <p>
-      ${escapeHtml(data.personalStatement)}
-    </p>
-
-    <h3>Fun Facts About Me</h3>
-    <ul>
-      <li><strong>Personal Background:</strong> ${escapeHtml(data.personalBackground)}</li>
-      <li><strong>Professional Background:</strong> ${escapeHtml(data.professionalBackground)}</li>
-      <li><strong>Academic Background:</strong> ${escapeHtml(data.academicBackground)}</li>
-      <li><strong>Primary Work Computer:</strong> ${escapeHtml(data.primaryWorkComputer)}</li>
-      <li><strong>Backup Work Computer / Location Plan:</strong> ${escapeHtml(data.backupWorkComputer)}</li>
-${funnyFactItem}${extraShareItem}    </ul>
-
-    <h3>Courses I’m Taking &amp; Why</h3>
-    <ol>
-${groupedCoursesHtml}
-    </ol>
-
-    <h3>Favorite Quote</h3>
-    <blockquote>
-      “${escapeHtml(data.quote)}”
-      <cite>
-        — ${escapeHtml(data.quoteAuthor)}
-        (<a href="${escapeHtml(data.quoteSource)}" target="_blank" rel="noopener">source</a>)
-      </cite>
-    </blockquote>
-
-    <p>
-      <a href="intro_form.html">Reset Form</a>
-    </p>
-  </main>
-
-  <footer data-include="components/footer.html"></footer>
-</body>
-</html>`;
-}
-
-function buildJsonData(data) {
-  return {
-    first_name: data.firstName,
-    middle_name_or_initial: data.middleName,
-    preferred_name: data.nickname,
-    last_name: data.lastName,
-    acknowledgement_statement: data.acknowledgement,
-    acknowledgement_date: data.ackDate,
-    mascot_adjective: data.mascotAdjective,
-    mascot_animal: data.mascotAnimal,
-    divider: data.divider,
-    image: currentImageSrc,
-    image_caption: data.pictureCaption,
-    personal_statement: data.personalStatement,
-    personal_background: data.personalBackground,
-    professional_background: data.professionalBackground,
-    academic_background: data.academicBackground,
-    primary_work_computer: data.primaryWorkComputer,
-    backup_work_computer_or_location_plan: data.backupWorkComputer,
-    funny_thing: data.funnyThing,
-    something_to_share: data.extraShare,
-    quote: data.quote,
-    quote_author: data.quoteAuthor,
-    quote_source: data.quoteSource,
-    courses: data.courses,
-    links: data.links
-  };
-}
-
-document.addEventListener("DOMContentLoaded", () => {
+function showIntroduction() {
   const form = document.getElementById("form");
-  const output = document.getElementById("output");
-  const clearBtn = document.getElementById("clearBtn");
-  const addCourseBtn = document.getElementById("addCourseBtn");
-  const pictureInput = document.getElementById("picture");
-  const picturePreview = document.getElementById("defaultPicturePreview");
-  const coursesSection = document.getElementById("coursesSection");
-  const linksSection = document.getElementById("linksSection");
+  const result = document.getElementById("result");
+  const pageTitle = document.getElementById("page-title");
 
-  initialCoursesMarkup = coursesSection.innerHTML;
-  initialLinksMarkup = linksSection.innerHTML;
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
 
-  pictureInput.addEventListener("change", () => {
-    const file = pictureInput.files[0];
-    if (file) {
-      currentImageSrc = URL.createObjectURL(file);
-      picturePreview.src = currentImageSrc;
-    }
-  });
+  const data = getFormData();
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+  pageTitle.textContent = "Introduction";
+  form.style.display = "none";
+  result.innerHTML = buildIntroHtml(data);
+  attachResetProgressHandler();
+}
 
-    if (!form.checkValidity()) {
-      form.reportValidity();
+function clearFormFields() {
+  const form = document.getElementById("form");
+  const elements = Array.from(form.querySelectorAll("input, textarea"));
+
+  elements.forEach((element) => {
+    if (element.type === "button" || element.type === "submit" || element.type === "reset" || element.type === "file") {
+      if (element.type === "file") {
+        element.value = "";
+      }
       return;
     }
 
-    const data = getFormData();
-    output.innerHTML = renderIntroductionPage(data, "Introduction Form");
-    form.style.display = "none";
+    element.value = "";
   });
 
-  clearBtn.addEventListener("click", () => {
-    const allFields = form.querySelectorAll("input, textarea");
+  currentImageSrc = "images/trip.jpg";
+  const picturePreview = document.getElementById("picturePreview");
+  if (picturePreview) {
+    picturePreview.src = currentImageSrc;
+  }
+}
 
-    allFields.forEach((field) => {
-      if (field.type === "button" || field.type === "submit" || field.type === "reset") {
-        return;
-      }
-      field.value = "";
-    });
+function attachResetProgressHandler() {
+  const resetLink = document.getElementById("resetProgressLink");
+  if (!resetLink) {
+    return;
+  }
 
-    pictureInput.value = "";
-    picturePreview.src = "";
-    currentImageSrc = "";
+  resetLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    restoreFormToDefaults();
+  });
+}
+
+function restoreFormToDefaults() {
+  const form = document.getElementById("form");
+  const result = document.getElementById("result");
+  const pageTitle = document.getElementById("page-title");
+
+  form.innerHTML = initialFormMarkup;
+  form.style.display = "block";
+  result.innerHTML = "";
+  pageTitle.textContent = initialTitle;
+  currentImageSrc = "images/trip.jpg";
+
+  initializeFormFeatures();
+}
+
+function addCourse() {
+  const coursesContainer = document.getElementById("coursesContainer");
+  const newCourse = document.createElement("div");
+  newCourse.className = "course-entry";
+
+  newCourse.innerHTML = `
+    <label>Department</label>
+    <input
+      type="text"
+      name="courseDepartment[]"
+      placeholder="Enter department"
+      required
+    >
+
+    <label>Number</label>
+    <input
+      type="text"
+      name="courseNumber[]"
+      placeholder="Enter course number"
+      required
+    >
+
+    <label>Name</label>
+    <input
+      type="text"
+      name="courseName[]"
+      placeholder="Enter course name"
+      required
+    >
+
+    <label>Reason</label>
+    <textarea
+      name="courseReason[]"
+      placeholder="Enter reason for taking this course"
+      required
+    ></textarea>
+
+    <button type="button" class="course-delete-btn">Delete Course</button>
+  `;
+
+  coursesContainer.appendChild(newCourse);
+}
+
+function initializeFormFeatures() {
+  const form = document.getElementById("form");
+  const clearBtn = document.getElementById("clearBtn");
+  const addCourseBtn = document.getElementById("addCourseBtn");
+  const pictureInput = document.getElementById("picture");
+  const picturePreview = document.getElementById("picturePreview");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    showIntroduction();
   });
 
   form.addEventListener("reset", () => {
     setTimeout(() => {
-      coursesSection.innerHTML = initialCoursesMarkup;
-      linksSection.innerHTML = initialLinksMarkup;
-      pictureInput.value = "";
-      picturePreview.src = "images/trip.jpg";
       currentImageSrc = "images/trip.jpg";
+      const updatedPreview = document.getElementById("picturePreview");
+      if (updatedPreview) {
+        updatedPreview.src = currentImageSrc;
+      }
     }, 0);
   });
 
-  addCourseBtn.addEventListener("click", () => {
-    const courseEntry = document.createElement("div");
-    courseEntry.className = "course-entry";
-
-    courseEntry.innerHTML = `
-      <label>Course Group</label>
-      <input type="text" name="courseGroup[]" placeholder="Ex: Major Related Courses" required>
-
-      <label>Department</label>
-      <input type="text" name="courseDepartment[]" placeholder="Ex: ITIS" required>
-
-      <label>Number</label>
-      <input type="text" name="courseNumber[]" placeholder="Ex: 3135" required>
-
-      <label>Name</label>
-      <input type="text" name="courseName[]" placeholder="Enter course name" required>
-
-      <label>Reason</label>
-      <textarea name="courseReason[]" placeholder="Enter your reason" required></textarea>
-
-      <button type="button" class="deleteCourseBtn">Delete Course</button>
-    `;
-
-    coursesSection.appendChild(courseEntry);
+  clearBtn.addEventListener("click", () => {
+    clearFormFields();
   });
 
-  document.addEventListener("click", (event) => {
-    if (event.target.classList.contains("deleteCourseBtn")) {
-      const courseCard = event.target.closest(".course-entry");
-      if (courseCard) {
-        courseCard.remove();
-      }
+  addCourseBtn.addEventListener("click", () => {
+    addCourse();
+  });
+
+  form.addEventListener("click", (event) => {
+    if (event.target.classList.contains("course-delete-btn")) {
+      event.target.closest(".course-entry").remove();
     }
   });
+
+  if (pictureInput && picturePreview) {
+    pictureInput.addEventListener("change", () => {
+      const file = pictureInput.files[0];
+
+      if (!file) {
+        currentImageSrc = "images/trip.jpg";
+        picturePreview.src = currentImageSrc;
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        currentImageSrc = e.target.result;
+        picturePreview.src = currentImageSrc;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("form");
+  initialFormMarkup = form.innerHTML;
+  initializeFormFeatures();
 });
+
+window.getFormData = getFormData;
+window.escapeHtml = escapeHtml;
+window.buildIntroHtml = buildIntroHtml;
+window.restoreFormToDefaults = restoreFormToDefaults;

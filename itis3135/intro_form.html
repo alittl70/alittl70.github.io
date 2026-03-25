@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/default.css">
   <title>Introduction Form</title>
+  <link rel="stylesheet" href="styles/default.css">
 
   <link
     rel="stylesheet"
@@ -13,23 +13,31 @@
 
   <style>
     #form {
-      display: grid;
-      gap: 0.75rem;
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
+    #form fieldset {
+      border: 1px solid #ccc;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
     #form label {
+      display: block;
+      margin-top: 0.75rem;
       font-weight: 600;
-      margin-top: 0.5rem;
     }
 
     #form input,
     #form textarea,
-    #form button,
-    #form select {
+    #form button {
+      width: 100%;
+      max-width: 100%;
+      padding: 0.65rem;
+      margin-top: 0.35rem;
+      box-sizing: border-box;
       font: inherit;
-      padding: 0.5rem;
     }
 
     #form textarea {
@@ -39,578 +47,479 @@
 
     .course-entry,
     .link-entry {
-      border: 1px solid #ccc;
+      border: 1px solid #d3d3d3;
       padding: 1rem;
       margin-bottom: 1rem;
-      border-radius: 8px;
     }
 
     .button-row {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 0.75rem;
       margin-top: 1rem;
     }
 
-    #defaultPicturePreview {
-      display: block;
-      max-width: 300px;
-      height: auto;
-      margin: 0.5rem 0;
+    .button-row button {
+      width: 100%;
     }
 
-    #output pre {
+    .course-delete-btn {
+      margin-top: 1rem;
+    }
+
+    #picturePreview {
+      display: block;
+      max-width: 280px;
+      height: auto;
+      margin-top: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    #result figure img {
+      max-width: 320px;
+      height: auto;
+      display: block;
+    }
+
+    #result pre {
       overflow-x: auto;
       padding: 1rem;
-      border-radius: 8px;
+    }
+
+    #result .reset-link-wrap {
+      margin-top: 1.5rem;
     }
   </style>
 </head>
-
 <body>
   <header data-include="components/header.html"></header>
 
   <main>
-    <h2 id="page-heading">Introduction Form</h2>
+    <h2 id="page-title">Introduction Form</h2>
     <h3>Please submit the form below.</h3>
 
     <form id="form">
-      <label for="firstName">First Name</label>
-      <input
-        type="text"
-        id="firstName"
-        name="firstName"
-        value="Alanah"
-        placeholder="Enter first name"
-        required
-      >
+      <fieldset>
+        <legend>Basic Information</legend>
 
-      <label for="middleName">Middle Name (or Initial) (optional)</label>
-      <input
-        type="text"
-        id="middleName"
-        name="middleName"
-        value=""
-        placeholder="Enter middle name or initial"
-      >
+        <label for="firstName">First Name</label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          value="Alanah"
+          placeholder="Enter first name"
+          required
+        >
 
-      <label for="nickname">Nickname / Preferred Name (optional)</label>
-      <input
-        type="text"
-        id="nickname"
-        name="nickname"
-        value=""
-        placeholder="Enter nickname or preferred name"
-      >
+        <label for="middleName">Middle Name (or Initial) (optional)</label>
+        <input
+          type="text"
+          id="middleName"
+          name="middleName"
+          value=""
+          placeholder="Enter middle name or initial"
+        >
 
-      <label for="lastName">Last Name</label>
-      <input
-        type="text"
-        id="lastName"
-        name="lastName"
-        value="Little"
-        placeholder="Enter last name"
-        required
-      >
+        <label for="nickname">Nickname / Preferred Name (optional)</label>
+        <input
+          type="text"
+          id="nickname"
+          name="nickname"
+          value=""
+          placeholder="Enter nickname or preferred name"
+        >
 
-      <label for="acknowledgement">Acknowledgment Statement</label>
-      <input
-        type="text"
-        id="acknowledgement"
-        name="acknowledgement"
-        value="I understand that what is on this page is not password protected and I will not put anything here that I do not want publicly available."
-        placeholder="Enter acknowledgment statement"
-        required
-      >
+        <label for="lastName">Last Name</label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          value="Little"
+          placeholder="Enter last name"
+          required
+        >
 
-      <label for="ackDate">Acknowledgement Date</label>
-      <input
-        type="date"
-        id="ackDate"
-        name="ackDate"
-        value="2026-03-24"
-        required
-      >
+        <label for="acknowledgement">Acknowledgment Statement</label>
+        <input
+          type="text"
+          id="acknowledgement"
+          name="acknowledgement"
+          value="I understand that what is on this page is not password protected and I will not put anything here that I do not want publicly available."
+          placeholder="Enter acknowledgment statement"
+          required
+        >
 
-      <label for="mascotAdjective">Mascot Adjective</label>
-      <input
-        type="text"
-        id="mascotAdjective"
-        name="mascotAdjective"
-        value="Adventurous"
-        placeholder="Ex: Adventurous"
-        required
-      >
+        <label for="ackDate">Acknowledgement Date</label>
+        <input
+          type="date"
+          id="ackDate"
+          name="ackDate"
+          value="2026-03-24"
+          required
+        >
 
-      <label for="mascotAnimal">Mascot Animal</label>
-      <input
-        type="text"
-        id="mascotAnimal"
-        name="mascotAnimal"
-        value="Lion"
-        placeholder="Ex: Lion"
-        required
-      >
+        <label for="mascotAdjective">Mascot Adjective</label>
+        <input
+          type="text"
+          id="mascotAdjective"
+          name="mascotAdjective"
+          value="Adventurous"
+          placeholder="Enter mascot adjective"
+          required
+        >
 
-      <label for="divider">Divider (ie, ~, |, ♥️, etc)</label>
-      <input
-        type="text"
-        id="divider"
-        name="divider"
-        value="~"
-        placeholder="Ex: ~"
-        required
-      >
+        <label for="mascotAnimal">Mascot Animal</label>
+        <input
+          type="text"
+          id="mascotAnimal"
+          name="mascotAnimal"
+          value="Lion"
+          placeholder="Enter mascot animal"
+          required
+        >
 
-      <label for="picture">Picture</label>
-      <img
-        id="defaultPicturePreview"
-        src="/images/trip.jpg"
-        alt="Photo of Alanah Little"
-        width="400"
-      >
-      <input
-        type="file"
-        id="picture"
-        name="picture"
-        accept="image/*"
-      >
+        <label for="divider">Divider (ie, ~, |, ♥️, etc)</label>
+        <input
+          type="text"
+          id="divider"
+          name="divider"
+          value="~"
+          placeholder="Enter divider"
+          required
+        >
+      </fieldset>
 
-      <label for="pictureCaption">Picture Caption</label>
-      <input
-        type="text"
-        id="pictureCaption"
-        name="pictureCaption"
-        value="Visited the Aquarium in Japan with my boyfriend."
-        placeholder="Enter picture caption"
-        required
-      >
+      <fieldset>
+        <legend>Picture</legend>
 
-      <label for="personalStatement">Personal Statement</label>
-      <textarea
-        id="personalStatement"
-        name="personalStatement"
-        placeholder="Enter personal statement"
-        required
-      >Hi! My name is Alanah Little. I’m a junior at UNC Charlotte studying Computer Science with a focus on Human-Computer Interaction. I'm interested in UX design, usability, and building products that feel simple and helpful.</textarea>
+        <label for="picture">Picture</label>
+        <img id="picturePreview" src="/images/trip.jpg" alt="Current preview image">
+        <input
+          type="file"
+          id="picture"
+          name="picture"
+          accept="image/*"
+        >
 
-      <label for="personalBackground">Personal Background</label>
-      <textarea
-        id="personalBackground"
-        name="personalBackground"
-        placeholder="Enter personal background"
-        required
-      >I'm currently 20 years old. I love traveling and trying new foods, and I enjoy improving my front-end coding skills each semester.</textarea>
+        <label for="pictureCaption">Picture Caption</label>
+        <input
+          type="text"
+          id="pictureCaption"
+          name="pictureCaption"
+          value="Visited the aquarium in Japan."
+          placeholder="Enter picture caption"
+          required
+        >
+      </fieldset>
 
-      <label for="professionalBackground">Professional Background</label>
-      <textarea
-        id="professionalBackground"
-        name="professionalBackground"
-        placeholder="Enter professional background"
-        required
-      >I’m a Server Assistant at Eddie V’s Prime Seafood (1 year 10 months). I also worked at Dick’s Sporting Goods for 1 year, and I was a Taekwondo instructor for 5 years.</textarea>
+      <fieldset>
+        <legend>Introduction Content</legend>
 
-      <label for="academicBackground">Academic Background</label>
-      <textarea
-        id="academicBackground"
-        name="academicBackground"
-        placeholder="Enter academic background"
-        required
-      >I'm a junior at UNC Charlotte studying Computer Science with a focus in Human-Computer Interaction. Before that, I attended high school in Garner, North Carolina.</textarea>
+        <label for="personalStatement">Personal Statement</label>
+        <textarea
+          id="personalStatement"
+          name="personalStatement"
+          placeholder="Enter personal statement"
+          required
+        >Hi! My name is Alanah Little, and I’m a junior at UNC Charlotte studying Computer Science with a concentration in Human-Computer Interaction.</textarea>
 
-      <label for="primaryWorkComputer">Primary Work Computer</label>
-      <textarea
-        id="primaryWorkComputer"
-        name="primaryWorkComputer"
-        placeholder="Enter primary work computer"
-        required
-      >MacBook Pro M2 (13-inch).</textarea>
+        <label for="personalBackground">Personal Background</label>
+        <textarea
+          id="personalBackground"
+          name="personalBackground"
+          placeholder="Enter personal background"
+          required
+        >I was born in California, have lived in different places growing up, and I enjoy traveling, trying new foods, and being creative.</textarea>
 
-      <label for="backupWorkComputer">Backup Work Computer / Location Plan</label>
-      <textarea
-        id="backupWorkComputer"
-        name="backupWorkComputer"
-        placeholder="Enter backup work computer or location plan"
-        required
-      >If needed, I can use a loaner laptop from Atkins Library and work either at my apartment or the library.</textarea>
+        <label for="professionalBackground">Professional Background</label>
+        <textarea
+          id="professionalBackground"
+          name="professionalBackground"
+          placeholder="Enter professional background"
+          required
+        >I currently work in hospitality and have previous experience in retail and as a taekwondo instructor.</textarea>
 
-      <label for="funnyThing">Funny thing (optional)</label>
-      <textarea
-        id="funnyThing"
-        name="funnyThing"
-        placeholder="Enter a funny or interesting fact"
-      >When I was a kid, I won a trophy at a pep rally for having the best dance.</textarea>
+        <label for="academicBackground">Academic Background</label>
+        <textarea
+          id="academicBackground"
+          name="academicBackground"
+          placeholder="Enter academic background"
+          required
+        >I am a junior Computer Science major at UNC Charlotte with a strong interest in UX design and front-end development.</textarea>
 
-      <label for="extraShare">Something I would like to share (optional)</label>
-      <textarea
-        id="extraShare"
-        name="extraShare"
-        placeholder="Enter something else you want to share"
-      >I was born in California.</textarea>
+        <label for="subjectBackground">Background in this Subject</label>
+        <textarea
+          id="subjectBackground"
+          name="subjectBackground"
+          placeholder="Enter subject background"
+          required
+        >I enjoy learning how to build websites and improve user experiences through HTML, CSS, JavaScript, and design thinking.</textarea>
 
-      <div id="coursesSection">
-        <h3>Courses</h3>
+        <label for="primaryComputer">Primary Computer Platform</label>
+        <textarea
+          id="primaryComputer"
+          name="primaryComputer"
+          placeholder="Enter primary computer platform"
+          required
+        >I mainly use a MacBook Pro for school, coding assignments, and design work.</textarea>
 
-        <div class="course-entry">
-          <label>Course Group</label>
-          <input
-            type="text"
-            name="courseGroup[]"
-            value="Major Related Courses"
-            placeholder="Ex: Major Related Courses"
-            required
-          >
+        <label for="coursesBackground">Courses I’m Taking & Why</label>
+        <textarea
+          id="coursesBackground"
+          name="coursesBackground"
+          placeholder="Enter general course background"
+          required
+        >The courses I’m taking this semester are helping me build stronger technical, design, and professional skills.</textarea>
 
-          <label>Department</label>
-          <input
-            type="text"
-            name="courseDepartment[]"
-            value="ITSC"
-            placeholder="Ex: ITIS"
-            required
-          >
+        <label for="funnyThing">Funny Thing (optional)</label>
+        <textarea
+          id="funnyThing"
+          name="funnyThing"
+          placeholder="Enter a funny thing about yourself"
+        >When I was younger, I won a dance trophy at a school pep rally.</textarea>
 
-          <label>Number</label>
-          <input
-            type="text"
-            name="courseNumber[]"
-            value="3688"
-            placeholder="Ex: 3135"
-            required
-          >
+        <label for="extraShare">Something I Would Like to Share (optional)</label>
+        <textarea
+          id="extraShare"
+          name="extraShare"
+          placeholder="Enter something you would like to share"
+        >I’m interested in both UX design and front-end/software development careers.</textarea>
+      </fieldset>
 
-          <label>Name</label>
-          <input
-            type="text"
-            name="courseName[]"
-            value="Computers and Their Impact on Society"
-            placeholder="Enter course name"
-            required
-          >
+      <fieldset>
+        <legend>Courses</legend>
+        <div id="coursesContainer">
+          <div class="course-entry">
+            <label>Department</label>
+            <input
+              type="text"
+              name="courseDepartment[]"
+              value="ITIS"
+              placeholder="Enter department"
+              required
+            >
 
-          <label>Reason</label>
-          <textarea
-            name="courseReason[]"
-            placeholder="Enter your reason"
-            required
-          >A required class that helps me develop and refine professional skills.</textarea>
+            <label>Number</label>
+            <input
+              type="text"
+              name="courseNumber[]"
+              value="3135"
+              placeholder="Enter course number"
+              required
+            >
+
+            <label>Name</label>
+            <input
+              type="text"
+              name="courseName[]"
+              value="Front-End Web Application Development"
+              placeholder="Enter course name"
+              required
+            >
+
+            <label>Reason</label>
+            <textarea
+              name="courseReason[]"
+              placeholder="Enter reason for taking this course"
+              required
+            >It directly supports my interest in front-end development and user-focused design.</textarea>
+          </div>
+
+          <div class="course-entry">
+            <label>Department</label>
+            <input
+              type="text"
+              name="courseDepartment[]"
+              value="ITSC"
+              placeholder="Enter department"
+              required
+            >
+
+            <label>Number</label>
+            <input
+              type="text"
+              name="courseNumber[]"
+              value="3688"
+              placeholder="Enter course number"
+              required
+            >
+
+            <label>Name</label>
+            <input
+              type="text"
+              name="courseName[]"
+              value="Computers and Their Impact on Society"
+              placeholder="Enter course name"
+              required
+            >
+
+            <label>Reason</label>
+            <textarea
+              name="courseReason[]"
+              placeholder="Enter reason for taking this course"
+              required
+            >It helps me better understand the ethical and social side of technology.</textarea>
+          </div>
         </div>
 
-        <div class="course-entry">
-          <label>Course Group</label>
-          <input
-            type="text"
-            name="courseGroup[]"
-            value="Major Related Courses"
-            placeholder="Ex: Major Related Courses"
-            required
-          >
+        <button type="button" id="addCourseBtn">Add Course</button>
+      </fieldset>
 
-          <label>Department</label>
-          <input
-            type="text"
-            name="courseDepartment[]"
-            value="ITIS"
-            placeholder="Ex: ITIS"
-            required
-          >
+      <fieldset>
+        <legend>Quote</legend>
 
-          <label>Number</label>
-          <input
-            type="text"
-            name="courseNumber[]"
-            value="3135"
-            placeholder="Ex: 3135"
-            required
-          >
+        <label for="quote">Quote</label>
+        <textarea
+          id="quote"
+          name="quote"
+          placeholder="Enter quote"
+          required
+        >The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.</textarea>
 
-          <label>Name</label>
-          <input
-            type="text"
-            name="courseName[]"
-            value="Front-End Web Application Development"
-            placeholder="Enter course name"
-            required
-          >
+        <label for="quoteAuthor">Quote Author</label>
+        <input
+          type="text"
+          id="quoteAuthor"
+          name="quoteAuthor"
+          value="Marcel Proust"
+          placeholder="Enter quote author"
+          required
+        >
+      </fieldset>
 
-          <label>Reason</label>
-          <textarea
-            name="courseReason[]"
-            placeholder="Enter your reason"
-            required
-          >Required and very relevant to my interests.</textarea>
-        </div>
-
-        <div class="course-entry">
-          <label>Course Group</label>
-          <input
-            type="text"
-            name="courseGroup[]"
-            value="Major Related Courses"
-            placeholder="Ex: Major Related Courses"
-            required
-          >
-
-          <label>Department</label>
-          <input
-            type="text"
-            name="courseDepartment[]"
-            value="ITSC"
-            placeholder="Ex: ITIS"
-            required
-          >
-
-          <label>Number</label>
-          <input
-            type="text"
-            name="courseNumber[]"
-            value="2600"
-            placeholder="Ex: 3135"
-            required
-          >
-
-          <label>Name</label>
-          <input
-            type="text"
-            name="courseName[]"
-            value="Computer Science Program, Identity, Career"
-            placeholder="Enter course name"
-            required
-          >
-
-          <label>Reason</label>
-          <textarea
-            name="courseReason[]"
-            placeholder="Enter your reason"
-            required
-          >Required course focused on career development.</textarea>
-        </div>
-
-        <div class="course-entry">
-          <label>Course Group</label>
-          <input
-            type="text"
-            name="courseGroup[]"
-            value="Major Related Courses"
-            placeholder="Ex: Major Related Courses"
-            required
-          >
-
-          <label>Department</label>
-          <input
-            type="text"
-            name="courseDepartment[]"
-            value="ITSC"
-            placeholder="Ex: ITIS"
-            required
-          >
-
-          <label>Number</label>
-          <input
-            type="text"
-            name="courseNumber[]"
-            value="4350"
-            placeholder="Ex: 3135"
-            required
-          >
-
-          <label>Name</label>
-          <input
-            type="text"
-            name="courseName[]"
-            value="Design Prototyping"
-            placeholder="Enter course name"
-            required
-          >
-
-          <label>Reason</label>
-          <textarea
-            name="courseReason[]"
-            placeholder="Enter your reason"
-            required
-          >Required course that supports my UX/HCI focus.</textarea>
-        </div>
-
-        <div class="course-entry">
-          <label>Course Group</label>
-          <input
-            type="text"
-            name="courseGroup[]"
-            value="Math / Statistics"
-            placeholder="Ex: Math / Statistics"
-            required
-          >
-
-          <label>Department</label>
-          <input
-            type="text"
-            name="courseDepartment[]"
-            value="STAT"
-            placeholder="Ex: STAT"
-            required
-          >
-
-          <label>Number</label>
-          <input
-            type="text"
-            name="courseNumber[]"
-            value="1220"
-            placeholder="Ex: 1220"
-            required
-          >
-
-          <label>Name</label>
-          <input
-            type="text"
-            name="courseName[]"
-            value="Elements of Statistics I"
-            placeholder="Enter course name"
-            required
-          >
-
-          <label>Reason</label>
-          <textarea
-            name="courseReason[]"
-            placeholder="Enter your reason"
-            required
-          >Required course.</textarea>
-        </div>
-      </div>
-
-      <button type="button" id="addCourseBtn">Add Course</button>
-
-      <div id="linksSection">
-        <h3>Links</h3>
+      <fieldset>
+        <legend>Links</legend>
 
         <div class="link-entry">
-          <label for="linkLabel1">Link 1 Label</label>
+          <label for="linkName1">Link 1 Name</label>
           <input
             type="text"
-            id="linkLabel1"
-            name="linkLabel1"
+            id="linkName1"
+            name="linkName1"
             value="LinkedIn"
-            placeholder="Enter link label"
+            placeholder="Enter link name"
             required
           >
 
-          <label for="linkUrl1">Link 1 URL</label>
+          <label for="linkHref1">Link 1 URL</label>
           <input
             type="url"
-            id="linkUrl1"
-            name="linkUrl1"
+            id="linkHref1"
+            name="linkHref1"
             value="https://www.linkedin.com/in/alanah-little/"
-            placeholder="Enter link URL"
+            placeholder="Enter URL"
             required
           >
         </div>
 
         <div class="link-entry">
-          <label for="linkLabel2">Link 2 Label</label>
+          <label for="linkName2">Link 2 Name</label>
           <input
             type="text"
-            id="linkLabel2"
-            name="linkLabel2"
+            id="linkName2"
+            name="linkName2"
             value="GitHub"
-            placeholder="Enter link label"
+            placeholder="Enter link name"
             required
           >
 
-          <label for="linkUrl2">Link 2 URL</label>
+          <label for="linkHref2">Link 2 URL</label>
           <input
             type="url"
-            id="linkUrl2"
-            name="linkUrl2"
+            id="linkHref2"
+            name="linkHref2"
             value="https://github.com/alittl70"
-            placeholder="Enter link URL"
+            placeholder="Enter URL"
             required
           >
         </div>
 
         <div class="link-entry">
-          <label for="linkLabel3">Link 3 Label</label>
+          <label for="linkName3">Link 3 Name</label>
           <input
             type="text"
-            id="linkLabel3"
-            name="linkLabel3"
+            id="linkName3"
+            name="linkName3"
             value="GitHub Pages"
-            placeholder="Enter link label"
+            placeholder="Enter link name"
             required
           >
 
-          <label for="linkUrl3">Link 3 URL</label>
+          <label for="linkHref3">Link 3 URL</label>
           <input
             type="url"
-            id="linkUrl3"
-            name="linkUrl3"
+            id="linkHref3"
+            name="linkHref3"
             value="https://alittl70.github.io/"
-            placeholder="Enter link URL"
+            placeholder="Enter URL"
             required
           >
         </div>
 
         <div class="link-entry">
-          <label for="linkLabel4">Link 4 Label</label>
+          <label for="linkName4">Link 4 Name</label>
           <input
             type="text"
-            id="linkLabel4"
-            name="linkLabel4"
-            value="UNC Charlotte Site"
-            placeholder="Enter link label"
+            id="linkName4"
+            name="linkName4"
+            value="UNC Charlotte Webpages"
+            placeholder="Enter link name"
             required
           >
 
-          <label for="linkUrl4">Link 4 URL</label>
+          <label for="linkHref4">Link 4 URL</label>
           <input
             type="url"
-            id="linkUrl4"
-            name="linkUrl4"
+            id="linkHref4"
+            name="linkHref4"
             value="https://webpages.charlotte.edu/alittl70/"
-            placeholder="Enter link URL"
+            placeholder="Enter URL"
             required
           >
         </div>
 
         <div class="link-entry">
-          <label for="linkLabel5">Link 5 Label</label>
+          <label for="linkName5">Link 5 Name</label>
           <input
             type="text"
-            id="linkLabel5"
-            name="linkLabel5"
-            value="Quote Source"
-            placeholder="Enter link label"
+            id="linkName5"
+            name="linkName5"
+            value="Portfolio"
+            placeholder="Enter link name"
             required
           >
 
-          <label for="linkUrl5">Link 5 URL</label>
+          <label for="linkHref5">Link 5 URL</label>
           <input
             type="url"
-            id="linkUrl5"
-            name="linkUrl5"
-            value="https://stanphelps.com/the-voyage-of-discovery-is-not-in-seeking-new-landscapes-but-in-having-new-eyes-marcel-proust/"
-            placeholder="Enter link URL"
+            id="linkHref5"
+            name="linkHref5"
+            value="https://alittl70.github.io/"
+            placeholder="Enter URL"
             required
           >
         </div>
-      </div>
+      </fieldset>
 
       <div class="button-row">
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
         <button type="button" id="clearBtn">Clear</button>
-        <button type="button" id="generateHTMLBtn">Generate HTML</button>
-        <button type="button" id="generateJSONBtn">Generate JSON</button>
+        <button type="button" id="generateHtmlBtn">Generate HTML</button>
+        <button type="button" id="generateJsonBtn">Generate JSON</button>
       </div>
     </form>
 
-    <section id="output"></section>
+    <section id="result"></section>
   </main>
 
   <footer data-include="components/footer.html"></footer>
 
-  <script src="scripts/include.min.js"></script>
-  <script src="scripts/introduction.js"></script>
-  <script src="scripts/generate_html.js"></script>
-  <script src="scripts/generate_json.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script defer src="scripts/include.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script defer src="scripts/introduction.js"></script>
+  <script defer src="scripts/generate_html.js"></script>
+  <script defer src="scripts/generate_json.js"></script>
 </body>
 </html>
