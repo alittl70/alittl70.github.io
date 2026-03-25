@@ -1,43 +1,45 @@
 # alittl70.github.io
-📌 Alanah Little — Personal Portfolio Website
+Front-End Development & UX Practice Project
 
-Welcome to my personal portfolio website repository. This site was developed as part of my coursework and serves as a central space to showcase my projects, skills, and growth in UX Design and Front-End Development.
+This repository contains an ongoing web development project where I design, build, and continuously improve a multi-page website as I grow my skills in front-end development and user experience design.
 
-🌐 View my website here:
-👉 https://alittl70.github.io/
+🔗 Live Site: https://alittl70.github.io/
 
-👩🏽‍💻 About This Project
-This multi-page website was built using core web technologies and focuses on clean structure, usability, and organized navigation.
+👩🏽‍💻 Overview
+
+This project serves as a hands-on space to practice building responsive, user-centered web interfaces. Rather than a finished portfolio, it reflects my learning process, experimentation, and iterative improvements over time.
 
 🛠 Technologies Used
-
-- HTML5 (semantic structure)
-- CSS3 (layout & styling)
-- Git & GitHub
-- GitHub Pages (deployment)
+HTML5 (semantic structure)
+CSS3 (layout & styling)
+Git & GitHub (version control)
+GitHub Pages (deployment)
 
 📁 Project Structure
-certifications/   → Certification pages  
-components/       → Header & Footer HTML  
-images/           → Site images  
-styles/           → CSS files  
-scripts/          → Include script  
-index.html        → Homepage  
-introduction.html → Intro page  
+certifications/ → Certification-related pages
+components/ → Reusable UI components (header, footer)
+images/ → Visual assets
+styles/ → CSS files
+scripts/ → JavaScript utilities (includes, etc.)
+index.html → Homepage
+introduction.html → Introduction page
 
-🎯 What I Learned
+🚀 Key Focus Areas
+Building and structuring multi-page websites
+Creating reusable components (header/footer includes)
+Improving navigation and user experience
+Practicing clean, organized file architecture
+Deploying and maintaining a live site
 
-1. How to structure a multi-page website
-2. Reusable components (header/footer includes)
-3. File organization & clean project structure
-4. Navigation and linking between pages
-5. Deploying a live site using GitHub Pages
+📈 Current Status
+🚧 Active Project — Continuously Improving
+This site is regularly updated as I learn new front-end techniques, refine design decisions, and improve accessibility and usability.
 
-🚧 Status
-This project is actively being improved as I continue learning more about front-end development, accessibility, and user experience design.
+📬 Connect With Me
+LinkedIn: https://www.linkedin.com/in/alanah-little
+GitHub: https://github.com/alittl70
 
 
-📬 Connect With Me!
 
 LinkedIn: https://www.linkedin.com/in/alanah-little
 GitHub: https://github.com/alittl70
