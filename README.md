@@ -40,6 +40,3 @@ LinkedIn: https://www.linkedin.com/in/alanah-little
 GitHub: https://github.com/alittl70
 
 
-
-LinkedIn: https://www.linkedin.com/in/alanah-little
-GitHub: https://github.com/alittl70
