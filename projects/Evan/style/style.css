@@ -1,0 +1,187 @@
+/* ============================================================
+   Lens & Light – Evan Capitain Photography
+   Main Stylesheet
+   Author: Alanah Little
+   ============================================================ */
+
+/* ---------- Google Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --black:      #0d0d0d;
+  --white:      #f8f6f2;
+  --cream:      #ede8df;
+  --gold:       #b8945a;
+  --gold-light: #d4ae7a;
+  --gray:       #6b6660;
+  --gray-light: #c8c3bc;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'Jost', sans-serif;
+  --nav-height: 72px;
+  --transition: 0.3s ease;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background-color: var(--white);
+  color: var(--black);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  line-height: 1.15;
+}
+h1 { font-size: clamp(2.8rem, 6vw, 5.5rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
+h4 { font-size: 1.2rem; }
+p  { margin-bottom: 1rem; }
+
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+/* ---------- Navigation ---------- */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-height);
+  background: rgba(13,13,13,0.92);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem;
+  border-bottom: 1px solid rgba(184,148,90,0.2);
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: 0.05em;
+}
+.logo span { color: var(--gold); font-style: italic; }
+
+nav ul { display: flex; gap: 2.5rem; align-items: center; }
+
+nav a {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray-light);
+  transition: color var(--transition);
+  position: relative;
+  padding-bottom: 4px;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width var(--transition);
+}
+
+nav a:hover,
+nav a.active { color: var(--white); }
+
+nav a:hover::after,
+nav a.active::after { width: 100%; }
+
+/* ---------- Main / Page Wrapper ---------- */
+main {
+  padding-top: var(--nav-height);
+  min-height: calc(100vh - var(--nav-height) - 80px);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background: var(--black);
+  color: var(--gray-light);
+  text-align: center;
+  padding: 2rem 3rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  border-top: 1px solid rgba(184,148,90,0.2);
+}
+footer a { color: var(--gold); transition: color var(--transition); }
+footer a:hover { color: var(--gold-light); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 2.2rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: all var(--transition);
+  cursor: pointer;
+  border: none;
+}
+.btn-primary { background: var(--gold); color: var(--black); }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-outline { background: transparent; color: var(--white); border: 1px solid var(--white); }
+.btn-outline:hover { background: var(--white); color: var(--black); }
+.btn-dark { background: var(--black); color: var(--white); }
+.btn-dark:hover { background: var(--gold); color: var(--black); }
+
+/* ---------- Section Helpers ---------- */
+.section { padding: 6rem 3rem; }
+.section-sm { padding: 4rem 3rem; }
+.container { max-width: 1200px; margin: 0 auto; }
+
+/* ---------- Inner Page Hero ---------- */
+.page-hero {
+  background: var(--black);
+  color: var(--white);
+  padding: 7rem 3rem 5rem;
+  text-align: center;
+}
+.page-hero h1 { color: var(--white); margin-bottom: 1rem; }
+.page-hero p { color: var(--gray-light); max-width: 600px; margin: 0 auto; }
+
+/* ---------- Divider ---------- */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 1.5rem auto;
+}
+.divider-left { margin: 1.5rem 0; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  header { padding: 0 1.5rem; }
+  nav ul { gap: 1.2rem; }
+  nav a  { font-size: 0.65rem; }
+  .logo  { font-size: 1.2rem; }
+  .section, .section-sm { padding: 4rem 1.5rem; }
+  .page-hero { padding: 6rem 1.5rem 3.5rem; }
+}

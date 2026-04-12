@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!--
+  Lens & Light – Evan Capitain Photography
+  Page: Portfolio (portfolio.html)
+  Author: Alanah Little
+  Course: Web-Based Application Development
+  Description: Filterable photo gallery organized by category.
+               JavaScript filter buttons show/hide cards by category.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio – Lens &amp; Light</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style/style.css" />
+
+  <style>
+    /* ---- Filter buttons ---- */
+    #filter-bar {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 2.5rem 0;
+    }
+
+    .filter-btn {
+      padding: 0.55rem 1.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1px solid var(--gray-light);
+      background: transparent;
+      color: var(--gray);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--black);
+    }
+
+    /* ---- Gallery grid ---- */
+    #gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .gallery-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-card:hover img { transform: scale(1.05); }
+
+    /* Caption overlay on hover */
+    .gallery-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(13,13,13,0.82));
+      color: var(--white);
+      padding: 2rem 1rem 1rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-card:hover .gallery-caption { opacity: 1; }
+
+    .gallery-caption h4 {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1rem;
+      font-weight: 300;
+      margin-bottom: 0.2rem;
+    }
+
+    .gallery-caption span {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    @media (max-width: 768px) {
+      #gallery-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      #gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Lens <span>&amp; Light</span></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contacts.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <span class="section-label">The Work</span>
+      <h1>Portfolio</h1>
+      <div class="divider"></div>
+      <p>Browse Evan's photography across four specialties. Use the filters to explore each category.</p>
+    </div>
+
+    <!-- Gallery Section -->
+    <section class="section">
+      <div class="container">
+
+        <!-- Filter Buttons -->
+        <div id="filter-bar" role="group" aria-label="Filter gallery by category">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="portraits">Portraits</button>
+          <button class="filter-btn" data-filter="landscapes">Landscapes</button>
+          <button class="filter-btn" data-filter="events">Events</button>
+          <button class="filter-btn" data-filter="commercial">Commercial</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div id="gallery-grid">
+
+          <!-- Portraits -->
+          <div class="gallery-card" data-category="portraits">
+            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=700&auto=format&fit=crop" alt="Portrait – woman in natural light" />
+            <div class="gallery-caption">
+              <h4>Golden Hour Session</h4>
+              <span>Portraits</span>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="portraits">
+            <img src="https://images.unsplash.com/photo-1554080353-a576cf803bda?w=700&auto=format&fit=crop" alt="Portrait – studio headshot" />
+            <div class="gallery-caption">
+              <h4>Studio Headshot</h4>
+              <span>Portraits</span>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="portraits">
+            <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=700&auto=format&fit=crop" alt="Portrait – family outdoors" />
+            <div class="gallery-caption">
+              <h4>Family Session</h4>
+              <span>Portraits</span>
+            </div>
+          </div>
+
+          <!-- Landscapes -->
+          <div class="gallery-card" data-category="landscapes">
+            <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&auto=format&fit=crop" alt="Landscape – rolling green mountains" />
+            <div class="gallery-caption">
+              <h4>Blue Ridge Sunrise</h4>
+              <span>Landscapes</span>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="landscapes">
+            <img src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?w=700&auto=format&fit=crop" alt="Landscape – lake reflection at dusk" />
+            <div class="gallery-caption">
+              <h4>Lake Norman Dusk</h4>
+              <span>Landscapes</span>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="landscapes">
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=700&auto=format&fit=crop" alt="Landscape – forest path with sunlight" />
+            <div class="gallery-caption">
+              <h4>Forest Path</h4>
+              <span>Landscapes</span>
+            </div>
+          </div>
+
+          <!-- Events -->
+          <div class="gallery-card" data-category="events">
+            <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=700&auto=format&fit=crop" alt="Event – wedding celebration with lights" />
+            <div class="gallery-caption">
+              <h4>Wedding Reception</h4>
+              <span>Events</span>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="events">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&auto=format&fit=crop" alt="Event – corporate conference" />
+            <div class="gallery-caption">
+              <h4>Corporate Gala</h4>
+              <span>Events</span>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="events">
+            <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=700&auto=format&fit=crop" alt="Event – birthday party" />
+            <div class="gallery-caption">
+              <h4>Birthday Celebration</h4>
+              <span>Events</span>
+            </div>
+          </div>
+
+          <!-- Commercial -->
+          <div class="gallery-card" data-category="commercial">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700&auto=format&fit=crop" alt="Commercial – product photography watch" />
+            <div class="gallery-caption">
+              <h4>Product Campaign</h4>
+              <span>Commercial</span>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="commercial">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=700&auto=format&fit=crop" alt="Commercial – retail brand shoot" />
+            <div class="gallery-caption">
+              <h4>Brand Shoot</h4>
+              <span>Commercial</span>
+            </div>
+          </div>
+
+          <div class="gallery-card" data-category="commercial">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&auto=format&fit=crop" alt="Commercial – restaurant food photography" />
+            <div class="gallery-caption">
+              <h4>Restaurant Promo</h4>
+              <span>Commercial</span>
+            </div>
+          </div>
+
+        </div><!-- /#gallery-grid -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      &copy; 2026 Evan Capitain Photography &mdash; Lens &amp; Light
+      &nbsp;|&nbsp;
+      Built by <a href="https://www.linkedin.com/in/alanah-little/">Alanah Little</a>
+    </p>
+  </footer>
+
+  <script src="Scripts/main.js"></script>
+  <script src="Scripts/portfolio.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!--
+  Lens & Light – Evan Capitain Photography
+  Page: About (about.html)
+  Author: Alanah Little
+  Course: Web-Based Application Development
+  Description: About page covering Evan's background, philosophy,
+               experience highlights, and equipment accordion.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About – Lens &amp; Light</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style/style.css" />
+
+  <style>
+    /* ---- Bio layout ---- */
+    #bio-section {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    /* Sticky headshot column */
+    #headshot {
+      position: sticky;
+      top: calc(var(--nav-height) + 2rem);
+    }
+
+    #headshot img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .headshot-tag {
+      margin-top: 1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-align: center;
+    }
+
+    /* ---- Bio text ---- */
+    #bio-text h2 { margin-bottom: 0.5rem; }
+    #bio-text p  { color: var(--gray); }
+
+    /* ---- Highlights strip ---- */
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+      padding: 2rem;
+      background: var(--cream);
+    }
+
+    .highlight-item { text-align: center; }
+
+    .highlight-num {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--gold);
+      display: block;
+    }
+
+    .highlight-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    /* ---- Accordion ---- */
+    #gear-section { margin-top: 2.5rem; }
+    #gear-section h3 { margin-bottom: 1.5rem; }
+
+    .accordion-item {
+      border-bottom: 1px solid var(--cream);
+    }
+
+    .accordion-header {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 1rem 0;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--black);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color var(--transition);
+    }
+
+    .accordion-header:hover { color: var(--gold); }
+
+    .accordion-icon {
+      font-size: 1.3rem;
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-item.open .accordion-icon { transform: rotate(45deg); }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .accordion-item.open .accordion-body { max-height: 300px; }
+
+    .accordion-body ul {
+      list-style: disc;
+      padding: 0 0 1rem 1.2rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .accordion-body li { margin-bottom: 0.4rem; }
+
+    @media (max-width: 768px) {
+      #bio-section { grid-template-columns: 1fr; gap: 2rem; }
+      #headshot { position: static; }
+      .highlights { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Lens <span>&amp; Light</span></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contacts.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <span class="section-label">The Person Behind the Lens</span>
+      <h1>About Evan</h1>
+      <div class="divider"></div>
+      <p>Photographer, storyteller, and light-chaser based in Charlotte, NC.</p>
+    </div>
+
+    <!-- Bio Section -->
+    <section class="section">
+      <div class="container">
+        <div id="bio-section">
+
+          <!-- Left: sticky headshot -->
+          <div id="headshot">
+            <img
+              src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&auto=format&fit=crop"
+              alt="Photographer Evan Capitain with camera"
+            />
+            <p class="headshot-tag">Evan Capitain &mdash; Charlotte, NC</p>
+          </div>
+
+          <!-- Right: bio text and gear accordion -->
+          <div id="bio-text">
+            <span class="section-label">Background</span>
+            <h2>A photographer with a passion for authentic moments</h2>
+            <div class="divider divider-left"></div>
+
+            <p>
+              Evan Capitain is a Charlotte-based freelance photographer with over five years
+              of experience capturing portraits, events, landscapes, and commercial imagery
+              across the Carolinas. He began shooting professionally in 2019 and has since
+              built a reputation for his calm presence on set and his ability to put subjects
+              at ease — resulting in images that feel natural, not posed.
+            </p>
+            <p>
+              His approach blends documentary instinct with careful composition. Whether he's
+              working with golden-hour light for an outdoor portrait session or navigating
+              the fast-paced energy of a live event, Evan prioritizes the authentic moment
+              over the perfect setup.
+            </p>
+            <p>
+              He has contributed work to regional publications and collaborated with local
+              businesses, restaurants, and event venues on commercial projects throughout
+              the Charlotte metro area.
+            </p>
+
+            <!-- Highlights -->
+            <div class="highlights">
+              <div class="highlight-item">
+                <span class="highlight-num">5+</span>
+                <span class="highlight-label">Years Experience</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-num">200+</span>
+                <span class="highlight-label">Sessions</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-num">4</span>
+                <span class="highlight-label">Specialties</span>
+              </div>
+            </div>
+
+            <!-- Equipment Accordion -->
+            <div id="gear-section">
+              <h3>Equipment</h3>
+
+              <!-- Cameras -->
+              <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                  Cameras <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-body">
+                  <ul>
+                    <li>Sony Alpha a7 IV (Primary)</li>
+                    <li>Sony Alpha a6400 (Backup / Event)</li>
+                    <li>GoPro HERO 12 (Action / BTS)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Lenses -->
+              <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                  Lenses <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-body">
+                  <ul>
+                    <li>Sony 85mm f/1.4 GM (Portraits)</li>
+                    <li>Sony 24-70mm f/2.8 GM (Events / Versatile)</li>
+                    <li>Sony 16-35mm f/2.8 GM (Landscapes / Wide)</li>
+                    <li>Sony 90mm f/2.8 Macro (Commercial / Detail)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Lighting -->
+              <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="false">
+                  Lighting <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-body">
+                  <ul>
+                    <li>Godox AD200 Pro Strobe (&times;2)</li>
+                    <li>Godox SL60W LED Continuous Light</li>
+                    <li>5-in-1 Reflector Set</li>
+                    <li>Various diffusers and softboxes</li>
+                  </ul>
+                </div>
+              </div>
+
+            </div><!-- /#gear-section -->
+
+            <a href="contacts.html" class="btn btn-primary" style="margin-top: 2.5rem;">
+              Work with Evan &rarr;
+            </a>
+
+          </div><!-- /#bio-text -->
+        </div><!-- /#bio-section -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      &copy; 2026 Evan Capitain Photography &mdash; Lens &amp; Light
+      &nbsp;|&nbsp;
+      Built by <a href="https://www.linkedin.com/in/alanah-little/">Alanah Little</a>
+    </p>
+  </footer>
+
+  <script src="Scripts/main.js"></script>
+  <script src="Scripts/accordion.js"></script>
+
+</body>
+</html>

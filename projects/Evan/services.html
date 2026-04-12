@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<!--
+  Lens & Light – Evan Capitain Photography
+  Page: Services (services.html)
+  Author: Alanah Little
+  Course: Web-Based Application Development
+  Description: Services and pricing page listing four photography
+               packages with deliverables and starting prices.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services – Lens &amp; Light</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style/style.css" />
+
+  <style>
+    /* ---- Services grid ---- */
+    #services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    /* Individual service card */
+    .service-card {
+      border: 1px solid var(--cream);
+      padding: 2.5rem;
+      position: relative;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      background: var(--white);
+    }
+
+    .service-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 30px rgba(184,148,90,0.1);
+    }
+
+    /* Gold accent bar on top of each card */
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--gold);
+    }
+
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 { margin-bottom: 0.5rem; }
+
+    .service-card p { color: var(--gray); font-size: 0.92rem; }
+
+    /* Starting price */
+    .service-price {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--gold);
+      display: block;
+      margin: 1rem 0 0.3rem;
+    }
+
+    .price-note {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      display: block;
+      margin-bottom: 1.2rem;
+    }
+
+    /* Deliverables checklist */
+    .deliverables {
+      margin: 1.2rem 0 1.8rem;
+      padding: 0;
+    }
+
+    .deliverables li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Gold checkmark bullet */
+    .deliverables li::before {
+      content: '✓';
+      color: var(--gold);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ---- Service images ---- */
+    .service-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ---- CTA strip ---- */
+    #cta-strip {
+      background: var(--black);
+      text-align: center;
+      padding: 5rem 3rem;
+      margin-top: 2rem;
+    }
+
+    #cta-strip h2 { color: var(--white); margin-bottom: 1rem; }
+    #cta-strip p  { color: var(--gray-light); max-width: 520px; margin: 0 auto 2rem; }
+
+    @media (max-width: 768px) {
+      #services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Lens <span>&amp; Light</span></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contacts.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <span class="section-label">Packages &amp; Pricing</span>
+      <h1>Services</h1>
+      <div class="divider"></div>
+      <p>Every session is tailored to your vision. Browse Evan's packages and reach out to discuss your specific needs.</p>
+    </div>
+
+    <!-- Services Grid -->
+    <section class="section">
+      <div class="container">
+        <div id="services-grid">
+
+          <!-- Portrait Sessions -->
+          <div class="service-card">
+            <img
+              src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=700&auto=format&fit=crop"
+              alt="Portrait photography session"
+              class="service-img"
+            />
+            <div class="service-icon" aria-hidden="true">&#128247;</div>
+            <h3>Portrait Sessions</h3>
+            <p>Individual, couple, and family portraits in-studio or on location. Perfect for headshots, personal branding, or milestone moments.</p>
+            <span class="service-price">From $250</span>
+            <span class="price-note">Final rate based on session length</span>
+            <ul class="deliverables">
+              <li>1–2 hour session</li>
+              <li>20+ professionally edited images</li>
+              <li>Online gallery within 7 days</li>
+              <li>Print-ready high-resolution files</li>
+              <li>One outfit change included</li>
+            </ul>
+            <a href="contacts.html?service=portrait" class="btn btn-primary">Book This Package</a>
+          </div>
+
+          <!-- Event Coverage -->
+          <div class="service-card">
+            <img
+              src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=700&auto=format&fit=crop"
+              alt="Event photography coverage"
+              class="service-img"
+            />
+            <div class="service-icon" aria-hidden="true">&#127881;</div>
+            <h3>Event Coverage</h3>
+            <p>Weddings, corporate events, parties, and celebrations. Evan captures candid moments and key highlights throughout your event.</p>
+            <span class="service-price">From $800</span>
+            <span class="price-note">Final rate based on event duration</span>
+            <ul class="deliverables">
+              <li>Full event coverage (4–8 hours)</li>
+              <li>100+ professionally edited images</li>
+              <li>Online gallery within 14 days</li>
+              <li>Print-ready high-resolution files</li>
+              <li>Highlights reel (optional add-on)</li>
+            </ul>
+            <a href="contacts.html?service=event" class="btn btn-primary">Book This Package</a>
+          </div>
+
+          <!-- Landscape Commissions -->
+          <div class="service-card">
+            <img
+              src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&auto=format&fit=crop"
+              alt="Landscape photography commission"
+              class="service-img"
+            />
+            <div class="service-icon" aria-hidden="true">&#127956;</div>
+            <h3>Landscape Commissions</h3>
+            <p>Fine art landscape photography for personal collections, home décor, or commercial display. Available as prints or digital licenses.</p>
+            <span class="service-price">From $150</span>
+            <span class="price-note">Print sizing and licensing affect final rate</span>
+            <ul class="deliverables">
+              <li>Custom location scouting</li>
+              <li>5–10 edited final images</li>
+              <li>Available as fine art prints</li>
+              <li>Digital licensing for commercial use</li>
+              <li>Framing consultation available</li>
+            </ul>
+            <a href="contacts.html?service=landscape" class="btn btn-primary">Book This Package</a>
+          </div>
+
+          <!-- Commercial Shoots -->
+          <div class="service-card">
+            <img
+              src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=700&auto=format&fit=crop"
+              alt="Commercial photography shoot"
+              class="service-img"
+            />
+            <div class="service-icon" aria-hidden="true">&#128188;</div>
+            <h3>Commercial Shoots</h3>
+            <p>Product photography, brand campaigns, and business imagery designed to stop the scroll and convert customers.</p>
+            <span class="service-price">From $500</span>
+            <span class="price-note">Scope and usage rights affect final rate</span>
+            <ul class="deliverables">
+              <li>Pre-shoot creative consultation</li>
+              <li>Half- or full-day shoot options</li>
+              <li>30+ edited deliverables</li>
+              <li>Commercial usage rights included</li>
+              <li>Social media–optimized formats</li>
+            </ul>
+            <a href="contacts.html?service=commercial" class="btn btn-primary">Book This Package</a>
+          </div>
+
+        </div><!-- /#services-grid -->
+      </div>
+    </section>
+
+    <!-- CTA Strip -->
+    <div id="cta-strip">
+      <h2>Not sure which package fits?</h2>
+      <p>Every project is different. Reach out and Evan will put together a custom quote based on your specific needs and timeline.</p>
+      <a href="contacts.html" class="btn btn-primary">Get a Custom Quote</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>
+      &copy; 2026 Evan Capitain Photography &mdash; Lens &amp; Light
+      &nbsp;|&nbsp;
+      Built by <a href="https://www.linkedin.com/in/alanah-little/">Alanah Little</a>
+    </p>
+  </footer>
+
+  <script src="Scripts/main.js"></script>
+
+</body>
+</html>
