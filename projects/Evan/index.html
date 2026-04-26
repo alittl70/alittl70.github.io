@@ -6,6 +6,8 @@
   Course: Web-Based Application Development
   Description: Landing page introducing Evan's photography brand with hero section,
                featured work grid, stats strip, and calls to action.
+               Part 4 additions: lightbox modal on featured cards,
+               scroll-reveal on sections and stat blocks.
 -->
 <html lang="en">
 <head>
@@ -20,6 +22,8 @@
 
   <!-- Shared stylesheet -->
   <link rel="stylesheet" href="style/style.css" />
+  <!-- Part 4: Interaction styles (lightbox, scroll-reveal, form validation) -->
+  <link rel="stylesheet" href="style/interactions.css" />
 
   <style>
     /* ---- Hero ---- */
@@ -36,7 +40,7 @@
     #hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url( 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&auto=format&fit=crop');
+      background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&auto=format&fit=crop');
       background-size: cover;
       background-position: center;
       filter: brightness(0.42);
@@ -114,6 +118,8 @@
 
     #featured .section-label,
     #featured h2 { text-align: center; color: var(--white); }
+
+    #featured .divider { margin: 1.5rem auto; }
 
     .featured-grid {
       display: grid;
@@ -219,7 +225,7 @@
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contacts.html">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -235,7 +241,7 @@
         <p>Professional photography for portraits, events, landscapes, and commercial work.</p>
         <div class="hero-cta">
           <a href="portfolio.html" class="btn btn-primary">View Portfolio</a>
-          <a href="contact.html" class="btn btn-outline">Get in Touch</a>
+          <a href="contacts.html"   class="btn btn-outline">Get in Touch</a>
         </div>
       </div>
       <div class="scroll-hint" aria-hidden="true">&#8964;</div>
@@ -269,13 +275,16 @@
       </div>
     </section>
 
-    <!-- Featured Work -->
+    <!-- Featured Work
+         Part 4: .featured-grid gets .reveal-group from interactions.js
+         Each .featured-card opens the lightbox on click -->
     <section id="featured">
       <div class="container">
         <span class="section-label">Selected Work</span>
         <h2>Featured Photography</h2>
         <div class="divider"></div>
         <div class="featured-grid">
+
           <div class="featured-card">
             <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=700&auto=format&fit=crop" alt="Portrait photography sample" />
             <div class="card-overlay">
@@ -283,6 +292,7 @@
               <span>Portraits</span>
             </div>
           </div>
+
           <div class="featured-card">
             <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&auto=format&fit=crop" alt="Landscape photography sample" />
             <div class="card-overlay">
@@ -290,6 +300,7 @@
               <span>Landscapes</span>
             </div>
           </div>
+
           <div class="featured-card">
             <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=700&auto=format&fit=crop" alt="Event photography sample" />
             <div class="card-overlay">
@@ -297,6 +308,7 @@
               <span>Events</span>
             </div>
           </div>
+
         </div>
         <div style="text-align: center; margin-top: 3rem;">
           <a href="portfolio.html" class="btn btn-primary">Browse Full Portfolio</a>
@@ -304,7 +316,8 @@
       </div>
     </section>
 
-    <!-- Stats -->
+    <!-- Stats
+         Part 4: each stat block gets .reveal via interactions.js -->
     <section id="stats">
       <div class="stats-grid">
         <div>
@@ -332,7 +345,10 @@
     </p>
   </footer>
 
-  <script src="scripts/main.js"></script>
+  <!-- JS: active nav link -->
+  <script src="Scripts/main.js"></script>
+  <!-- JS Part 4: lightbox, scroll-reveal, form validation -->
+  <script src="Scripts/interactions.js"></script>
 
 </body>
 </html>

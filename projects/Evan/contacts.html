@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <!--
   Lens & Light – Evan Capitain Photography
-  Page: Contact (contacts.html)
+  Page: Contact (contact.html)
   Author: Alanah Little
   Course: Web-Based Application Development
-  Description: Contact and booking inquiry form with client-side
-               validation. Pre-selects service dropdown if arriving
-               from the Services page via URL query parameter.
+  Description: Contact page with inquiry form. Part 4 addition:
+               live JavaScript validation on all form fields with
+               inline error/success feedback and a character counter
+               on the message textarea.
 -->
 <html lang="en">
 <head>
@@ -14,179 +15,99 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact – Lens &amp; Light</title>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 
+  <!-- Shared stylesheet -->
   <link rel="stylesheet" href="style/style.css" />
+  <!-- Part 4: Interaction styles -->
+  <link rel="stylesheet" href="style/interactions.css" />
 
   <style>
-    /* ---- Layout ---- */
-    #contact-layout {
+    /* ---- Contact Layout ---- */
+    #contact-wrapper {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
+      grid-template-columns: 1fr 1.6fr;
       gap: 5rem;
       align-items: start;
     }
 
-    /* ---- Form styles ---- */
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      margin-bottom: 1.4rem;
+    /* ---- Contact Info sidebar ---- */
+    #contact-info .section-label { margin-bottom: 0.5rem; }
+
+    #contact-info h2 {
+      margin-bottom: 0.75rem;
     }
 
-    label {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    #contact-info p {
       color: var(--gray);
+      margin-bottom: 2rem;
     }
 
-    label .required { color: var(--gold); margin-left: 2px; }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
 
-    input[type="text"],
-    input[type="email"],
-    input[type="date"],
-    select,
-    textarea {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      border: 1px solid var(--gray-light);
-      background: var(--white);
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
+    .contact-icon {
+      font-size: 1.1rem;
+      color: var(--gold);
+      min-width: 1.4rem;
+      margin-top: 0.1rem;
+    }
+
+    .contact-detail-text {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    .contact-detail-text strong {
+      display: block;
+      font-weight: 500;
       color: var(--black);
-      transition: border-color var(--transition);
-      outline: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus { border-color: var(--gold); }
-
-    /* Validation error styles */
-    input.error,
-    select.error,
-    textarea.error { border-color: #c0392b; }
-
-    .error-msg {
-      font-size: 0.72rem;
-      color: #c0392b;
-      display: none;
+    /* ---- Form panel ---- */
+    #contact-form-panel {
+      background: var(--cream);
+      padding: 3rem;
     }
 
-    .error-msg.visible { display: block; }
+    #contact-form-panel h3 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
 
-    textarea { resize: vertical; min-height: 130px; }
+    #contact-form-panel > p {
+      font-size: 0.82rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
 
+    /* Two-column row for name + email */
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
-    .form-actions {
-      display: flex;
-      gap: 1rem;
-      margin-top: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    /* Success / error feedback */
-    #form-feedback {
-      display: none;
-      padding: 1rem 1.5rem;
-      margin-top: 1.5rem;
-      font-size: 0.9rem;
-    }
-
-    #form-feedback.success {
-      background: #e8f5e9;
-      color: #2e7d32;
-      border-left: 4px solid #2e7d32;
-    }
-
-    #form-feedback.error {
-      background: #fdecea;
-      color: #c0392b;
-      border-left: 4px solid #c0392b;
-    }
-
-    /* ---- Contact info panel ---- */
-    #contact-info { padding-top: 0.5rem; }
-    #contact-info h3 { margin-bottom: 1.5rem; }
-
-    .info-item {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      align-items: flex-start;
-    }
-
-    .info-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
-
-    .info-text strong {
-      display: block;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.2rem;
-    }
-
-    .info-text span { color: var(--gray); font-size: 0.92rem; }
-
-    /* Social links */
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .social-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--black);
-      border: 1px solid var(--gray-light);
-      padding: 0.55rem 1.1rem;
-      transition: all var(--transition);
-      text-decoration: none;
-    }
-
-    .social-link:hover {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: var(--black);
-    }
-
-    /* Map placeholder */
-    #map-placeholder {
-      margin-top: 2rem;
-      background: var(--cream);
-      border: 1px solid var(--gray-light);
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gray-light);
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 768px) {
-      #contact-layout { grid-template-columns: 1fr; gap: 3rem; }
-      .form-row { grid-template-columns: 1fr; }
+    /* ---- Responsive ---- */
+    @media (max-width: 900px) {
+      #contact-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row        { grid-template-columns: 1fr; }
+      #contact-form-panel { padding: 2rem 1.5rem; }
     }
   </style>
 </head>
@@ -209,126 +130,153 @@
 
     <!-- Page Hero -->
     <div class="page-hero">
-      <span class="section-label">Let's Work Together</span>
-      <h1>Get in Touch</h1>
-      <div class="divider"></div>
-      <p>Ready to book a session or have a question? Fill out the form below and Evan will get back to you within 24 hours.</p>
+      <span class="section-label">Get in Touch</span>
+      <h1>Let's Create Together</h1>
+      <p>Ready to book a session or just have questions? Reach out — Evan typically responds within 24 hours.</p>
     </div>
 
-    <!-- Contact Layout -->
+    <!-- Contact Section -->
     <section class="section">
       <div class="container">
-        <div id="contact-layout">
+        <div id="contact-wrapper">
 
-          <!-- LEFT: Booking Form -->
-          <div id="inquiry-form">
-            <span class="section-label">Booking Inquiry</span>
-            <h2>Send a Message</h2>
+          <!-- Sidebar: contact info -->
+          <div id="contact-info" class="reveal">
+            <span class="section-label">Contact Details</span>
+            <h2>Reach Out</h2>
             <div class="divider divider-left"></div>
+            <p>
+              Whether you're planning a portrait session, need event coverage,
+              or want to discuss a commercial project, Evan would love to hear from you.
+            </p>
+
+            <div class="contact-detail">
+              <span class="contact-icon">&#9993;</span>
+              <div class="contact-detail-text">
+                <strong>Email</strong>
+                evan@lensandlight.photography
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <span class="contact-icon">&#9742;</span>
+              <div class="contact-detail-text">
+                <strong>Phone</strong>
+                (704) 555-0192
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <span class="contact-icon">&#9679;</span>
+              <div class="contact-detail-text">
+                <strong>Location</strong>
+                Charlotte, NC &amp; surrounding areas<br>
+                Available for travel shoots
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <span class="contact-icon">&#9200;</span>
+              <div class="contact-detail-text">
+                <strong>Response Time</strong>
+                Within 24 hours on business days
+              </div>
+            </div>
+          </div>
+
+          <!-- Form panel
+               Part 4: #contact-form gets live validation from interactions.js -->
+          <div id="contact-form-panel" class="reveal">
+            <h3>Send a Message</h3>
+            <p>Fields marked with * are required.</p>
 
             <form id="contact-form" novalidate>
 
-              <!-- Name and Email -->
               <div class="form-row">
+                <!-- Name -->
                 <div class="form-group">
-                  <label for="name">Full Name <span class="required">*</span></label>
-                  <input type="text" id="name" name="name" placeholder="Your name" required />
-                  <span class="error-msg" id="name-error">Please enter your name.</span>
+                  <label for="name">Full Name *</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Jane Smith"
+                    required
+                    autocomplete="name"
+                  />
+                  <span class="field-msg"></span>
                 </div>
+
+                <!-- Email -->
                 <div class="form-group">
-                  <label for="email">Email Address <span class="required">*</span></label>
-                  <input type="email" id="email" name="email" placeholder="you@email.com" required />
-                  <span class="error-msg" id="email-error">Please enter a valid email.</span>
+                  <label for="email">Email Address *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="jane@example.com"
+                    required
+                    autocomplete="email"
+                  />
+                  <span class="field-msg"></span>
                 </div>
               </div>
 
-              <!-- Phone -->
+              <!-- Phone (optional) -->
               <div class="form-group">
-                <label for="phone">Phone Number <em style="font-weight:300;">(optional)</em></label>
-                <input type="text" id="phone" name="phone" placeholder="(xxx) xxx-xxxx" />
+                <label for="phone">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="(704) 555-0100"
+                  autocomplete="tel"
+                />
+                <span class="field-msg"></span>
               </div>
 
-              <!-- Service dropdown -->
+              <!-- Session type -->
               <div class="form-group">
-                <label for="service">Service of Interest <span class="required">*</span></label>
-                <select id="service" name="service" required>
-                  <option value="">Select a service…</option>
-                  <option value="portrait">Portrait Session</option>
-                  <option value="event">Event Coverage</option>
-                  <option value="landscape">Landscape Commission</option>
-                  <option value="commercial">Commercial Shoot</option>
+                <label for="session">Type of Session *</label>
+                <select id="session" name="session" required>
+                  <option value="">— Select a session type —</option>
+                  <option value="portrait">Portrait / Headshots</option>
+                  <option value="event">Event Photography</option>
+                  <option value="landscape">Landscape / Travel</option>
+                  <option value="commercial">Commercial / Brand</option>
                   <option value="other">Other / Not Sure Yet</option>
                 </select>
-                <span class="error-msg" id="service-error">Please select a service.</span>
-              </div>
-
-              <!-- Preferred date -->
-              <div class="form-group">
-                <label for="date">Preferred Date <span class="required">*</span></label>
-                <input type="date" id="date" name="date" required />
-                <span class="error-msg" id="date-error">Please select a future date.</span>
+                <span class="field-msg"></span>
               </div>
 
               <!-- Message -->
               <div class="form-group">
-                <label for="message">Message <span class="required">*</span></label>
-                <textarea id="message" name="message" placeholder="Tell Evan about your project…" required></textarea>
-                <span class="error-msg" id="message-error">Please enter a message (at least 20 characters).</span>
+                <label for="message">Your Message *</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Tell Evan about your project, preferred dates, location ideas, or any questions you have..."
+                  required
+                  minlength="20"
+                  maxlength="600"
+                ></textarea>
+                <span class="field-msg"></span>
+                <!-- Character counter injected here by interactions.js -->
               </div>
 
-              <!-- Buttons -->
-              <div class="form-actions">
-                <button type="submit" class="btn btn-primary">Send Message</button>
-                <button type="reset" class="btn btn-dark" id="reset-btn">Reset</button>
-              </div>
+              <button type="submit" class="btn btn-primary">Send Message</button>
 
-              <!-- Feedback message -->
-              <div id="form-feedback" role="alert"></div>
+            </form><!-- /#contact-form -->
 
-            </form>
-          </div>
-
-          <!-- RIGHT: Contact Info -->
-          <div id="contact-info">
-            <span class="section-label">Contact Details</span>
-            <h3>Reach Out Directly</h3>
-            <div class="divider divider-left"></div>
-
-            <div class="info-item">
-              <span class="info-icon" aria-hidden="true">&#9993;</span>
-              <div class="info-text">
-                <strong>Email</strong>
-                <span><a href="mailto:himevan@gmail.com">himevan@gmail.com</a></span>
-              </div>
+            <!-- Success state (hidden until valid submit) -->
+            <div id="form-success" role="alert">
+              <h3>Message Sent!</h3>
+              <p>Thanks for reaching out. Evan will be in touch within 24 hours.</p>
             </div>
 
-            <div class="info-item">
-              <span class="info-icon" aria-hidden="true">&#128205;</span>
-              <div class="info-text">
-                <strong>Service Area</strong>
-                <span>Charlotte, NC &amp; surrounding areas within 60 miles</span>
-              </div>
-            </div>
+          </div><!-- /#contact-form-panel -->
 
-            <div class="info-item">
-              <span class="info-icon" aria-hidden="true">&#128337;</span>
-              <div class="info-text">
-                <strong>Response Time</strong>
-                <span>Within 24 hours on business days</span>
-              </div>
-            </div>
-
-            <!-- Social links -->
-            <div class="social-links">
-              <a href="https://www.instagram.com/em5.evan/" class="social-link" target="_blank" rel="noopener noreferrer">
-                &#128247; Instagram
-              </a>
-            
-            </div>
-
-          </div>
-
-        </div>
+        </div><!-- /#contact-wrapper -->
       </div>
     </section>
 
@@ -342,8 +290,10 @@
     </p>
   </footer>
 
+  <!-- JS: active nav link -->
   <script src="Scripts/main.js"></script>
-  <script src="Scripts/contact.js"></script>
+  <!-- JS Part 4: lightbox, scroll-reveal, form validation -->
+  <script src="Scripts/interactions.js"></script>
 
 </body>
 </html>
